@@ -1,0 +1,207 @@
+%!TEX root = ./main.tex
+
+\documentclass[
+  paper=A4,
+  fontsize=12pt,
+  parskip=half,
+  headsepline,
+  listof=totoc,
+  draft=false,
+  headings=small,
+  oneside,
+  final,
+  numbers=noenddot
+]{scrbook}
+
+% Margins
+\usepackage[
+  left=40mm,
+  right=20mm,
+  top=25mm,
+  bottom=25mm
+]{geometry}
+
+% Reduction of the spaces between headings and text
+\RedeclareSectionCommand[afterskip=.0001\baselineskip]{section}
+\RedeclareSectionCommand[afterskip=.0001\baselineskip]{subsection}
+\RedeclareSectionCommand[afterskip=.0001\baselineskip]{subsubsection}
+\RedeclareSectionCommand[beforeskip=.0001\baselineskip]{paragraph}
+
+% Font selection
+\usepackage{fontspec}
+
+% English spelling and English standard texts
+\usepackage[english]{babel} 
+
+% 1/2-line spacing
+\usepackage[onehalfspacing]{setspace}
+
+% For the use of graphics
+\usepackage{graphicx}
+
+% Better tables
+\usepackage{tabularx}
+
+% Diagonally divided table cells
+\usepackage{diagbox}
+
+% Table cells across multiple rows or columns
+\usepackage{multirow}
+
+% Possibility for line breaks in tables
+\usepackage{makecell}
+
+% Tables in landscape format
+\usepackage{rotating}
+
+% more line spacing in tables
+\renewcommand{\arraystretch}{1.15}
+
+% For the commands \ toprule, \ midrule and \ bottomrule, e.g. in tables
+\usepackage{booktabs}
+
+% Allows the use of colors
+\usepackage{color}
+
+% Links in PDF
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle=\documenttitle,
+  pdfauthor=\documentauthor,
+}
+
+% Improved URL handling with \ url {http: // ...}
+\usepackage{url}
+
+% Lists without spaces \ begin {compactlist} ... \ end {compactlist}
+\usepackage{paralist}
+
+% Output of the current time for the draft versions
+\usepackage{datetime}
+
+% Deutsche Anführungszeichen
+\usepackage[babel,german=quotes]{csquotes}
+
+% Configuration of the figure and table names
+\usepackage[
+  format=hang,
+  font={footnotesize, sf},
+  labelfont=bf,
+  justification=raggedright,
+  singlelinecheck=false
+]{caption}
+
+% Macro for references under figures and tables
+\newcommand{\source}[1]{\vspace{-.5\topsep}\caption*{\textsf{\textbf{Quelle:}} \textsf{#1}} }
+
+% Place images at the exact location
+\usepackage{float}
+
+% Footnotes to headings
+\usepackage[stable]{footmisc}
+
+% Quotes and bibliography
+\usepackage[
+    style=authoryear-ibid,
+    giveninits=false,
+    natbib=true,
+    urldate=long,
+    url=true,
+    date=long,
+    dashed=false,
+    maxcitenames=2,
+    maxbibnames=99,
+    backend=biber,
+    autocite=footnote,
+    uniquelist=false,
+    ibidpage=true,
+    citetracker=true
+]{biblatex}
+\bibliography{library/library}
+\DeclareLabeldate{
+  \field{year}
+  \field{date}
+  \field{eventdate} 
+  \field{origdate}
+  \literal{nodate}
+}
+\AtEveryBibitem{
+  \ifentrytype{book}{
+    \clearfield{url}
+    \clearfield{urldate}
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{urlday}
+  }{}
+  \ifentrytype{article}{
+    \clearfield{url}
+    \clearfield{urldate}
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{urlday}
+  }{}
+  \ifentrytype{inproceedings}{
+    \clearfield{url}
+    \clearfield{urldate}
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{urlday}
+  }{}
+  \ifentrytype{incollection}{
+    \clearfield{url}
+    \clearfield{urldate}
+    \clearfield{urlyear}
+    \clearfield{urlmonth}
+    \clearfield{urlday}
+  }{}
+}
+
+% Numbering level depth
+\setcounter{secnumdepth}{3}
+
+% Gliederungstiefe im Inhaltsverzeichnis 
+\setcounter{tocdepth}{2}
+
+% Level of detail in the table of contents
+\setuptoc{toc}{totoc}
+
+% List of tables and figures with designation
+\usepackage[titles]{tocloft}
+
+% Abbreviations
+\usepackage{acronym}
+
+% Suppress certain warnings
+% see http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\usepackage{scrhack}
+
+% Source code listings
+\usepackage[chapter,newfloat]{minted}
+
+\setminted{
+  linenos=true,
+  frame=lines,
+  baselinestretch=1,
+  breaklines=true,
+  breakautoindent=true,
+  fontsize=\small
+}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Listing,listname=Listingverzeichnis}
+
+% Number footnotes consecutively
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+% UTF8 characters for math environment
+\usepackage{amsmath}
+
+% Improves the referencing of chapters, figures etc.
+\usepackage[english,capitalise]{cleveref}
+
+% Pandoc Integration
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
