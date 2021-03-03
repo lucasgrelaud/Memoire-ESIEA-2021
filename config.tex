@@ -2,7 +2,7 @@
 
 \documentclass[
   paper=A4,
-  fontsize=12pt,
+  fontsize=11pt,
   parskip=half,
   headsepline,
   listof=totoc,
@@ -38,6 +38,13 @@
 
 % For the use of graphics
 \usepackage{graphicx}
+
+% Add tikz
+\usepackage{tikz}
+\usetikzlibrary{
+    calc,
+    positioning
+}
 
 % Better tables
 \usepackage{tabularx}
@@ -190,7 +197,7 @@
 }
 
 \newenvironment{code}{\captionsetup{type=listing}}{}
-\SetupFloatingEnvironment{listing}{name=Listing,listname=Listingverzeichnis}
+\SetupFloatingEnvironment{listing}{name=Listing,listname=List of listing}
 
 % Number footnotes consecutively
 \usepackage{chngcntr}
@@ -205,3 +212,6 @@
 % Pandoc Integration
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Define main font
+\setmainfont{Arial}

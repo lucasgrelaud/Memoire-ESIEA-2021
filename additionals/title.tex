@@ -3,34 +3,61 @@
 
 \begin{titlepage}
 
-\begin{center}
+% Kensington picture
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[anchor=north, yshift=-10mm] (jcd_pic) at (current page.north){
+        \includegraphics[width=0.9\paperwidth,height=0.45\paperheight]{resources/img/jcd_background.jpg}
+    };
+\end{tikzpicture}
 
+% Blue box (ugly way make it, but will do the job)
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[anchor=north, yshift=-0.44\paperheight] at (current page.north){
+        \includegraphics[width=0.9\paperwidth,height=0.3\paperheight]{resources/img/blue_bg.jpg}
+    };
+    \node[anchor=north, yshift=-0.46\paperheight, xshift=-0.44\paperwidth, align=flush right, text width=0.7\paperwidth] 
+    at (current page.north east) {
+        \color{white} \Huge \textbf\documenttype\\
+        \vspace{5mm}
+        \color{white} \LARGE \documenttitle\\
+    };
+    \node[anchor=north, yshift=-0.64\paperheight] at (current page.north) {
+        \color{white}
+        \large
+        \begin{tabular}{c@{\hskip 20mm}c@{\hskip 20mm}c}
+    
+            \textbf{\underline{Maître d'apprentissage}} & \textbf{\underline{Président du Jury}} & \textbf{\underline{Tuteur prédagogique}}\\
+            \\
+            \corpmanager & \jurypresident & \documentreviewer
+        \end{tabular}
+    };
 
-\large {\institution}
+\end{tikzpicture}
 
-\large {\documenttype}
+% ESIEA logo
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[anchor=north, xshift=0.25\paperwidth] at (current page.north west){
+        \includegraphics[width=0.45\paperwidth,keepaspectratio]{resources/img/Logo_ESIEA_Baseline_blanc.png}
+    };
+\end{tikzpicture}
 
+% Additionnal info
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[anchor=south, yshift=-0.46\paperheight, xshift=-0.44\paperwidth, align=flush right, text width=0.7\paperwidth] 
+    at (current page.south east) {
+        \textbf\documenttype\\
+        \vspace{5mm}
+        \color{white} \LARGE \documenttitle\\
+    };
 
-~\vspace{1.5cm}\\
+\end{tikzpicture}
 
-\LARGE \textbf{\documenttitle}
-
-\LARGE {\documentsubtitle}
-
-\vspace{2cm}
-
-
-\large \textbf{Reviewer:}\\{\documentreviewer}
-
-\large \textbf{Author}:\\{\documentauthor}\\Identification number.: {\identificationnumber}\\{\documentauthoraddress}
-
-\large \textbf{Study:}\\{\studyprogramme}\\Study group: {\studygroup}
-
-\large \textbf{Deadline:}\\{\submissiondate}
-
-
-\end{center}
-
+% JCDecaux logo
+\begin{tikzpicture}[remember picture,overlay] 
+    \node[anchor=south, yshift=15mm] at (current page.south){
+        \includegraphics[width=0.25\paperwidth,keepaspectratio]{resources/img/Logo_JCDecaux_seul_without_baseline.jpg}
+    };
+\end{tikzpicture}
 
 \end{titlepage}
 
