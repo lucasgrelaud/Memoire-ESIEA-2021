@@ -13,7 +13,8 @@
 % Blue box (ugly way make it, but will do the job)
 \begin{tikzpicture}[remember picture,overlay] 
     \node[anchor=north, yshift=-0.44\paperheight] at (current page.north){
-        \includegraphics[width=0.9\paperwidth,height=0.3\paperheight]{resources/img/blue_bg.jpg}
+        \includegraphics[width=0.9\paperwidth,height=0.145\paperheight]{resources/img/blue_bg.jpg}
+
     };
     \node[anchor=north, yshift=-0.46\paperheight, xshift=-0.44\paperwidth, align=flush right, text width=0.7\paperwidth] 
     at (current page.north east) {
@@ -21,8 +22,12 @@
         \vspace{5mm}
         \color{white} \LARGE \documenttitle\\
     };
-    \node[anchor=north, yshift=-0.64\paperheight] at (current page.north) {
-        \color{white}
+    \node[anchor=north, yshift=-0.64\paperheight, align=center, text width=0.7\paperwidth] at (current page.north) {
+        \Large \textbf{Auteur:} Lucas GRELAUD\\
+        \vspace{2mm}
+        \Large \textbf{Période de mission :} 8 Février 2021 au 31 Août 2021
+    };
+    \node[anchor=north, yshift=-0.74\paperheight] at (current page.north) {
         \large
         \begin{tabular}{c@{\hskip 20mm}c@{\hskip 20mm}c}
     
