@@ -4,7 +4,6 @@
   paper=A4,
   fontsize=11pt,
   parskip=half,
-  headsepline,
   listof=totoc,
   draft=false,
   headings=small,
@@ -15,10 +14,10 @@
 
 % Margins
 \usepackage[
-  left=40mm,
-  right=20mm,
-  top=25mm,
-  bottom=25mm
+  left=25mm,
+  right=25mm,
+  top=20mm,
+  bottom=30mm
 ]{geometry}
 
 % Reduction of the spaces between headings and text
@@ -33,8 +32,8 @@
 % Font selection
 \usepackage{fontspec}
 
-% English spelling and English standard texts
-\usepackage[english]{babel} 
+% French spelling and French standard texts
+\usepackage[french]{babel} 
 
 % 1/2-line spacing
 \usepackage[onehalfspacing]{setspace}
@@ -71,14 +70,15 @@
 \usepackage{booktabs}
 
 % Allows the use of colors
-\usepackage{color}
+\usepackage{xcolor}
+\definecolor{bluejcd}{RGB}{0,56,101}
 
 % Links in PDF
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=false,
   pdfborder={0 0 0},
-  pdftitle=\documenttitle,
+  pdftitle=\documenttitleun,
   pdfauthor=\documentauthor,
 }
 
@@ -210,7 +210,7 @@
 \usepackage{amsmath}
 
 % Improves the referencing of chapters, figures etc.
-\usepackage[english,capitalise]{cleveref}
+\usepackage[french,capitalise]{cleveref}
 
 % Pandoc Integration
 \providecommand{\tightlist}{%
@@ -218,3 +218,30 @@
 
 % Define main font
 \setmainfont{Arial}
+
+% Define heading format
+\tikzset{
+  % Styling of header text is done using key/value options for TikZ nodes. See
+  % section 16.4 of the PGF manual for a complete list of options that affect
+  % text.
+  headings/base/.style = {
+    % Zap node seperation, set text width and alignment.
+    outer sep = 0pt,
+    % Trim off 2/3rd of an em to compensate for the inner xsep which spaces the
+    % text nicely away from the left side, but causes the node to hang into the
+    % right margin.
+    text width = {\textwidth - 0.666em},
+    align = left,
+    text = white,
+  },
+  headings/chapter/.style = {
+    headings/base,
+    fill = bluejcd,
+    font = \Large
+  },
+}
+
+\newcommand{\colorboxedsec}[2]{%
+  \tikz{\node[headings/#1]{#2};}}
+
+\setkomafont{chapter}{\colorboxedsec{chapter}}

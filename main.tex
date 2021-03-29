@@ -3,11 +3,8 @@
 \newcommand{\submissiondate}{Lundi 2 Août 2021} 
 \newcommand{\location}{Chatou} 
 \newcommand{\documenttitle}{Étude de sécurisation d’une infrastructure Kubernetes \linebreak et de ses applications hébergées}
+\newcommand{\documenttitleun}{Étude de sécurisation d’une infrastructure Kubernetes et de ses applications hébergées}
 \newcommand{\documentauthor}{Lucas GRELAUD}
-\newcommand{\documentauthoraddress}{Addresse}
-\newcommand{\studyprogramme}{Study programme}
-\newcommand{\studygroup}{Study group}
-\newcommand{\institution}{Institution}
 \newcommand{\corpmanager}{Marc BOUGET}
 \newcommand{\documentreviewer}{David CHAMAILLARD}
 \newcommand{\jurypresident}{ xxxxx XXXXX}
@@ -27,44 +24,32 @@
   %%%%%%%%%%%%%
   %% indexes %%
   %%%%%%%%%%%%%
-  \pagenumbering{Roman}
 
   % disclosure statement - uncomment if needed
   % \input{additionals/disclosure.tex}
   % \newpage
 
   % executive summary - uncomment if needed
-  %\input{additionals/executive_summary.tex}
-  % \newpage
+  \input{additionals/executive_summary_en.tex}
+  \newpage
+  \input{additionals/executive_summary_fr.tex}
+  \newpage
+
+  % acknowledgment -  uncomment if needed
+  \input{additionals/acknowledgment.tex}
+  \newpage
 
   % table of contents
   \tableofcontents
   \newpage
 
-  % acronyms
-  \input{additionals/acronyms.tex}
-  \newpage
-
-  % list of figures
-  \listoffigures
-  \newpage
-
-  % list of tables
-  \listoftables
-  \newpage
-
-  % list of listings
-  \listoflistings
-  \newpage
-
   %%%%%%%%%%%%%
   %% content %%
   %%%%%%%%%%%%%
-  \pagenumbering{arabic}
-
+  
   % insert chapter files here like this:
-  %   \input{chapter/myfile}
-  %   \newpage
+  \input{chapter/introduction}
+  \newpage
 
   % when using pandoc workflow instead, uncomment the following
   % \input{chapter/out.tex}
@@ -73,6 +58,22 @@
   %%%%%%%%%%%%%
   %% closing %%
   %%%%%%%%%%%%%
+  
+  % acronyms
+  \input{additionals/acronyms.tex}
+  \newpage
+
+  % list of figures
+  %\listoffigures
+  %\newpage
+
+  % list of tables
+  %\listoftables
+  %\newpage
+
+  % list of listings
+  %\listoflistings
+  %\newpage
   % list of references
   \input{additionals/references.tex}
   \newpage
@@ -82,6 +83,6 @@
   % \newpage
 
   % affirmation
-  \input{additionals/affirmation.tex}
+  %\input{additionals/affirmation.tex}
 
 \end{document}
