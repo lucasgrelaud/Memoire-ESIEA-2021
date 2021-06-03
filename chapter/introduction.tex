@@ -1,40 +1,39 @@
 %!TEX root = ../main.tex
 \chapter{Introduction}
 
-Cette mission de fin d'étude clotûre trois années d'apprentissage réalisées au sein de l'équipe de sécurité informatique 
-du Groupe JCDecaux. Elle permets aussi de finaliser un travail de longue haleine visant à sécuriser et moderniser
+Cette mission de fin d'étude clôture trois années d'apprentissage réalisées au sein de l'équipe de sécurité informatique 
+du Groupe JCDecaux. Elle permet aussi de finaliser un travail de longue haleine visant à sécuriser et moderniser
 la chaîne de production des applications et outils exploités par le groupe et ses filiales.
 
 \section{Le Groupe JCDecaux}
-JCDecaux est un groupe industriel international fondée en France en 1964 par Jean Claude Decaux et spécialisé dans 
+JCDecaux est un groupe industriel international fondée en France en 1964 par Jean-Claude Decaux et spécialisé dans 
 l'affichage publicitaire urbain. Principalement connue pour son mobilier urbain (Abribus, MUPI\footnote{Mobilier Urbain 
 Pour l'Information - Panneau d'affichage de 2m² dont l'une des faces est réservée pour les collectivités.}, Senior\footnote{
 Panneau d'affichage de 4m² en fixation murale ou aérienne.}), l'entreprise familiale a su se hisser en tant que leader de 
 la communication extérieure et est reconnue comme étant N°1 mondiale dans ce domaine depuis 2001. Le Chiffre d'Affaires du 
 groupe était de 3 890.2 M€ en 2019.
 
-Cette notoriété du Groupe JCDecaux s'explique par sa présence dans plus de 80 pays répartis sur tous les continents, mais
-aussi et surtout par la qualité des services proposés par le groupe auprès des collectivités locales qu'auprès des annonceurs.
-Cette recherche de la qualité, esthétique et innovation pour les mobiliers urbains fait partie intégrante des valeurs de 
-l'entreprise et représent une réelle fierté pour ses 12 300 collaborateurs. 
+La notoriété du Groupe JCDecaux s'explique par sa présence dans plus de 80 pays répartis sur tous les continents, mais
+aussi et surtout par la qualité des services proposés tant auprès des collectivités locales qu'aux annonceurs.
+Cette recherche de qualité, d'esthétique et d'innovation dans le mobiliers urbains fait partie intégrante des valeurs de 
+l'entreprise et représente une réelle fierté pour ses 12 300 collaborateurs. 
 
 \section{L'équipe Sécurité des Systèmes d'Informations}
 \begin{wrapfigure}{R}{0.27\textwidth} 
     \centering \includegraphics[width=0.25\textwidth]{resources/img/jcd_pla_front.jpg}
     \centering Siège de Sainte Apolline
 \end{wrapfigure}
-Depuis 2013, la \ac{DSI} Groupe s'est dotée d'une équipe dédiée à la sécurisation des ses systèmes
-d'information.
-Cette décision faisait suite à l'augmentation progressive des déploiement de systèmes de diffusion publicitaires numériques et
-de la monté en puissance de la diffusion programmatique.
+En 2013, la \ac{DSI} Groupe s'est pourvu d'une équipe dédiée à la \ac{SSI}.
+Cette décision faisait suite à l'augmentation progressive des déploiements de systèmes de diffusion publicitaires numériques et
+de la montée en puissance de la diffusion programmatique.
 
-L'équipe \ac{SSI} Groupe de JCDecaux est localisée sur le plateau de la \ac{DSI}, au siège de Sainte Apolline, Plaisir.
+L'équipe \ac{SSI} Groupe de JCDecaux est localisée sur le plateau de la \ac{DSI}, au siège de Sainte-Apolline, Plaisir.
 Elle est actuellement composée de trois personnels internes (le \ac{RSSI}, un ingénieur \ac{SSI}, un apprenti) et est complémenté 
-par trois personnels externes (prestation).
+par trois personnels externes en prestation.
 \newpage
 Les missions de cette équipe portent tant sur l'aspect organisationnel (Analyse de risque, gestion des politiques, sensibilisation),
-opérationnel (SOC, conformité, veille phishing) que de la qualification technique des systèmes et infrastructures. L'équipe propose
-ainsi un certain nombre de services à destination des filiales à titre gracieux afin de promouvoir la \ac{SSI} auprès des filiales.
+l' opérationnel (SOC, conformité, veille phishing) que sur la qualification technique des systèmes et infrastructures. L'équipe propose
+ainsi ces services au Groupe et à ses Filiales afin de sécuriser leurs systèmes.
 
 \section{Publicité et développement applicatif}
 De par la complexité et la volatilité du secteur publicitaire (publicité programmatique, booking de campagne, diffusion numérique), 
@@ -44,18 +43,18 @@ de ses DSI (Groupe \& Filiales).
 
 Depuis 2016, ces équipes de développement  ont mis en place dans leur projet des méthodes agiles; afin 
 d'accélérer leurs temps de développement ainsi qu'améliorer la fiabilité et flexibilité de leurs applications.
-Ce changement de doctrine sur les méthodes de gestion de projet à permit une reduction de la complexité des applications produites
+Ce changement de doctrine sur les méthodes de gestion de projet a permis une réduction de la complexité des applications produites
 grâce notamment à leur modularisation et favorise leurs réemplois pour tout ou partie dans les filiales du Groupe JCDecaux.
 
 \section{Automatisation et conteneurisation du Si}
 Conséquence de l'augmentation du nombre de composant applicatif dans le SI, le nombre de serveurs et machines virtuelles exploités par 
-la \ac{DSI} n'a céssé de croître durant les cinq dernières années.
+la \ac{DSI} n'a cessé de croître durant les cinq dernières années.
 
 Pour palier à la complexité de gestion induite par cette augmentation, la \ac{DSI} Groupe s'est pourvu en outils et méthodes pour 
 automatiser les tâches les plus courantes tel que l'initialisation des serveurs, le patch management ou encore le déploiement des
-applications. Cet outillage à commencé par le développement et la mise en production d'une \ac{CMP} reliée à notre \ac{CMDB}, réel atout 
-pour les équipes opérationnels, puis la mise en place de script Ansible\footnote{Ansible est une plate-forme \ac{FOSS} développée par
-RedHat servant à la gestion de déploiement applicatif au travers d'une simple connection \ac{SSH}}
+applications. Cet outillage a commencé par le développement et la mise en production d'une \ac{CMP} reliée à notre \ac{CMDB}, réel atout 
+pour les équipes opérationnelles, puis la mise en place de script Ansible\footnote{Ansible est une plate-forme \ac{FOSS} développée par
+RedHat servant à la gestion de déploiement applicatif au travers d'une simple connexion \ac{SSH}}
 
 Depuis 2018, la \ac{DSI} Groupe et la \ac{DSI} France coopèrent dans un programme de déploiement des applications métier sous la forme
 de conteneurs sur une infrastructure Kubernetes managé sur \ac{AWS}, le Cloud Provider de JCDecaux. Il vise à la simplification
@@ -68,23 +67,23 @@ applications, conteneurs et cluster Kubernetes sont à résoudre avant de pouvoi
 Comme pour toute infrastructure hébergée par ou pour le Groupe JCDecaux, cette plateforme Kubernetes se doit de respecter un ensemble de 
 règles et de principes définies par les IT Security Policies\footnote{FR: Politiques de sécurité Informatique}. Ces documents, 
 regroupés par domaines (Réseau, Identité, Vulnérabilité, Données, etc..), régissent en effet l'aspect "Sécurité informatique" de tout projet
-réalisés par les équipes du Groupe et les guides dans leurs développement.
+réalisés par les équipes du Groupe et les guides dans leurs développements.
 
 Afin d'attester du niveau de conformité et de sécurité de la nouvelle plateforme, l'équipe \ac{SSI} à fait exécuter en externe un audit 
 technique de cette dernière. Réalisé en Juillet 2020 par XMCO, cet audit avait pour objectif d'étudier le niveau de sécurité courant de 
 l'environnement \ac{EKS} de JCDecaux (découverte et tentative d'exploitation de Vulnérabilités); ainsi que de fournir un certain nombre 
 de recommandations visant à assurer la sécurité de la plateforme suite à sa généralisation.
 
-Cet audit a permit de mettre en évidence de nombreuses de faiblesses et / ou défaut de conception de la plateforme Kubernetes. 
+Cet audit a permis de mettre en évidence de nombreuses de faiblesses et / ou défaut de conception de la plateforme Kubernetes. 
 Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ainsi émergés :
 \begin{enumerate}
     \item Cloisonnement de l'infrastructure
     \begin{itemize}
-        \item Ségmentation des cluster en fonction des \ac{BU}
+        \item Ségmentation des clusters en fonction des \ac{BU}
         \item Durcissement des règles réseau
     \end{itemize}
     \item Contrôle des déploiements
-    \item \begin{itemize}
+        \begin{itemize}
         \item Intégration de protection contre objets dangereux
         \item Application des PodSecurityPolicy
         \item Ajout de règles OpenPolicyAgent aux contrôleurs d'admission
@@ -100,10 +99,45 @@ Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ai
         \item Mise en place de guides pour les développement / déploiement
         \item Sensibilisation des équipes
         \item Standardisation des déploiements
-        \item Validation des images et des application
+        \item Validation des images et des applications
     \end{itemize}
 \end{enumerate}
 
 \pagebreak
 
-sss
+\section{La mission et ces objectifs}
+
+Comme énoncé précédemment, quatre chantiers de remédiation sont à réaliser afin de rendre la plateforme Kubernetes conforme aux politiques
+de sécurité informatique du groupe.
+
+Le chantier de cloisonnement de l'infrastructure Kubernetes ainsi que celui relatif au contrôle d'accès sont en cours de 
+finalisation. Ils ont en effet été lancés directement à la suite de l'audit.
+\linebreak Le chantier de contrôle des déploiements est partiellement réalisé et celui de la sensibilisation reste à démarrer. C'est donc 
+de à ces deux derniers que nous allons nous intéresser.
+
+Les objectifs de ma mission de fin d'études sont exprimés de la façon suivante :
+\begin{enumerate}
+    \item Objectifs organisationnels : 
+    \begin{itemize}
+        \item Revue des procédures de qualification sécurité des applications, conteneurs et de déploiements
+        \item Revue des procédures de gestion opérationnel de la sécurité des clusters Kubernetes
+        \item Production de ressources visant à la standardisation des déploiements sur les clusters
+        \item Production de guides et ressources visant à la sécurisation des développements pour Kubernetes
+    \end{itemize}
+    \item Objectifs techniques:
+    \begin{itemize}
+        \item Analyse des moyens techniques existants au sein du groupe et évaluation de leur efficacité.
+        \item Consolidation et optimisation des moyens techniques existants.
+        \item Qualification de nouvelles solutions techniques visant l’amélioration de la sécurité de l’infrastructure Kubernetes du  groupe, 
+        tant sur les phases développements que sur les phases de déploiement.
+        \item Intégration des solutions retenues à l’infrastructure. 
+    \end{itemize}
+\end{enumerate}
+
+Ma mission est donc en réalité constituée de deux phases, chacune mêlant des objectifs organisationnel et techniques:
+\begin{itemize}
+    \item Première phase : revoir et normaliser notre méthodologie de gestion de la sécurité des développements (applicatif et conteneur)
+    \item Second temps : fournir des éléments techniques et opérationnels visant à maintenir un bon niveau de sécurité dans l'exploitation 
+    de la plateforme Kubernetes. 
+\end{itemize}
+
