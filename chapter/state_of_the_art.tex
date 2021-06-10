@@ -4,7 +4,7 @@
 Comme vous l'aurez compris, deux sujets principaux seront abordés dans ce mémoire : la gestion de la sécurité informatique
 dans une chaîne de production DevOps et la gestion opérationnelle de la sécurité de cluster Kubernetes. 
 
-Il me semble donc pertinent de dresser un état de l'art pour ces deux sujet afin de permettre une meilleur compréhension des
+Il me semble donc pertinent de dresser un état de l'art pour ces deux sujets afin de permettre une meilleure compréhension des
 de leurs problématiques, mais aussi afin à mieux appréhender les possibles solutions à ces dernières.
 
 \section{Evaluation des risques de sécurité}
@@ -15,22 +15,23 @@ le cadre d'un développement logiciel. Ainsi, l'utilisation du terme \emph{Pipel
 \autocite[Ch.\ 6]{devops_for_dummies_freeman_forsgren_2019}, aux standards de développement
 \autocite[Ch.\ 9]{devops_for_dummies_freeman_forsgren_2019}, processus de qualification et 
 validation, de même qu'à l'ensemble des outils et services utilisés par les équipes de développement. Il s'agit donc d'un élément
-centrale dans la chaîne de production DevOps: tout problème impactant un élément du \emph{Pipeline} aura des répercutions sur les 
+centrale dans la chaîne de production DevOps: tout problème impactant un élément du \emph{Pipeline} aura des répercussions sur les 
 autre et risque ainsi de mettre en péril les opérations de développement.
 
-Nous pouvons donc nous poser la question de la nature de ces risques et particulièrement de ceux relatif à la sécurité du 
+Nous pouvons donc nous poser la question de la nature de ces risques et particulièrement de ceux relatifs à la sécurité du 
 \emph{Pipeline}. Pour cela, nous allons utiliser comme support le \ac{SDLC} d'un logiciel afin de mieux cibler les problématiques
 de sécurité à chaque étape d'un projet.
 
-\begin{figure}
+\vspace{2em}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{resources/img/devops_lifecycle.png}
-    \caption{Représentation du cycle de vie d'un projet DevOps}
+    \captionsource{Représentation du cycle de vie d'un projet DevOps}{DevOps for Dummies, Figure 6-1}
     \label{fig:devops-lifecycle}
-  \end{figure}
+\end{figure}
 \newpage
 
-Après une rapide analyse, voici les principaux risque qui se présentes à nous :
+Après une rapide analyse, voici les principaux risque qui se présente à nous :
 \begin{multicols}{2}
     \begin{enumerate}
         \item Plan :
@@ -72,19 +73,63 @@ Après une rapide analyse, voici les principaux risque qui se présentes à nous
     \end{enumerate}
 \end{multicols}
 
-On constate donc que majoritairement les risques sont porté par des erreurs lors du développement et non par
-le socle technique de l'application / conteneur. Il s'agira donc d'un point d'attention dans la recherche de
-solutions.
+On constate donc que majoritairement les risques sont portés par des erreurs lors du développement.
+Il s'agira donc d'un point d'attention dans la recherche de solutions.
 
 \subsection{Les risques d'un cluster Kubernetes}
 
 Bien que l'orchestrateur Kubernetes constitue une coûche d'abstraction entre l'infrastructure physique qui 
-l'héberge et les conteneur qu'il fait fonctionner, les risques qu'il porte sont similaires à une infrastructure
-(virtualisé ou non) classique. Il est par exemple important de pouvoir lister les instance de conteneur (a.k.a. 
+l'héberge et les conteneurs qu'il fait fonctionner, les risques qu'il porte sont similaires à une infrastructure
+(virtualisé ou non) classique. Il est par exemple important de pouvoir lister les instances de conteneur (a.k.a. 
 Pod) en cours d'execution, leur version ainsi que la présence de vulnérabilité; de pouvoir assurer un contrôle
 d'accès approprié ou bien de pouvoir assurer la sécurité du réseau du cluster. 
 
 Cependant, étant donné que le cluster se comporte comme une coûche d'abstraction, il hérite de problématiques
 de sécurité qui lui sont propre. C'est ainsi qu'il est nécessaire de pouvoir surveiller les groupes de ressources
-(Namespaces), de contraindre des configuration de déploiement ou l'origine des conteneurs.
+(Namespaces), de contraindre des configurations de déploiement ou l'origine des conteneurs.
 
+\newpage
+
+\section{Recherche de solutions}
+
+Ayant maintenant identifiés les risques encourus par notre Pipeline DevOps et l'infrastructure Kubernetes associée,
+nous pouvons nous intéresser aux solutions permettant leurs réduction.
+
+Pour cela nous allons utiliser comme support la méthodologie décrite dans le \citetitle{samm_v2.0_owasp_project_2021}
+\autocite{samm_v2.0_owasp_project_2021}
+de l'\citeauthor{samm_v2.0_owasp_project_2021}. Cette méthodologie mis à jours en \citedate{samm_v2.0_owasp_project_2021}
+fait office de référence pour l'analyse et l'amélioration de la sécurité des logiciels développés en entreprise; elle est
+particulièrement recommandé dans le cadre de développement Agiles et / ou DevOps.
+
+\subsection{Le modèle de référence}
+
+Le \ac{SAMM} est, comme son nom l'indique, un modèle permettant de quantifier le niveau de maturité d'un processus de 
+développement logiciel sur le plan de la sécurité informatique. Cette quantification est réalisée sur la base de différentes
+pratiques de sécurité chacune regroupés dans des fonctions métier et notés sur une échelle de trois points avec en point 
+initial zero implicite. Enfin, les pratiques de sécurité dispose de deux activité permettant de qualifier le niveau de 
+maturité sur ses principaux thèmes.
+
+Le \ac{SAMM} peu donc être représenté de la manière suivante :
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{resources/img/Samm_v2.png}
+    \captionsource{Modèle SAMM v2}{Release note v2, \href{https://owaspsamm.org/release-notes-v2/}{OWASPSAMM.org}}
+    \label{fig:samm-rep}
+\end{figure}
+
+\newpage
+
+L'échelle de quantification quant à elle est défine de la manière suivante : 
+\setlist[enumerate,1]{start=0}
+\begin{enumerate}
+    \item Niveau initial, aucune mesure de sécurité n'est appliqué.
+    \item Niveau de compréhension basique de problématiques de sécurité et application de mesure ad hoc.
+    \item Niveau avancé d'application des mesures de prévention avec constatation de l'efficacité ces dernières.
+    \item Niveau de maîtrise complète des pratiques de sécurité à l'échelle de l'organisation.
+\end{enumerate}
+\setlist[enumerate,1]{start=1}
+On considérera dans cette mission que le second niveau est un prérequis à la validation des pratiques de sécurité.
+Le dernier niveau constitue quant à lui l'objectif à atteindre.
+
+\subsection{Gouvernance}

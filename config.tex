@@ -92,6 +92,9 @@
 % Lists without spaces \ begin {compactlist} ... \ end {compactlist}
 \usepackage{paralist}
 
+% Allowing custom emunerate
+\usepackage{enumitem}
+
 % Output of the current time for the draft versions
 \usepackage{datetime}
 
@@ -112,7 +115,7 @@
 \usepackage{float}
 
 % Footnotes to headings
-\usepackage[bottom]{footmisc}
+%\usepackage[bottom]{footmisc}
 
 % Justification for caption
 \usepackage[justification=centering]{caption}
@@ -250,3 +253,12 @@
   \tikz{\node[headings/#1]{#2};}}
 
 \setkomafont{chapter}{\colorboxedsec{chapter}}
+
+% Add figure caption with source
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{%
+    #1%
+    \\\hspace{\linewidth}%
+    \textbf{Source:} #2%
+  }%
+}
