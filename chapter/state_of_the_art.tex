@@ -133,3 +133,49 @@ On considérera dans cette mission que le second niveau est un prérequis à la 
 Le dernier niveau constitue quant à lui l'objectif à atteindre.
 
 \subsection{Gouvernance}
+
+La fonction \emph{Gouvernance}, telle que présentée dans le modèle \ac{SAMM}, représente le point de départ de la 
+mise en oeuvre de la sécurité informatique dans le cadre de développement. C'est en effet grâce sur la base des 
+trois pratiques de sécurité associés (\emph{Stratégie \& Métriques}, \emph{Politiquer \& Conformité}, 
+\emph{Formation \& Conseils}) que seront issue l'ensemble des actions techniques et organisationnels des autres
+fonctions métier.
+
+La \emph{Gouvernance} de la sécurité des développement est un sujet déjà encrée dans la philosophie du Groupe JCDecaux.
+Ainsi, il dispose d'un niveau de maturité avancé grâce notamment à la mise en place de politiques de sécurité dédiées
+au développement et leur application, la formation et intégration d'interlocuteurs sensibilisé aux risques de sécurité
+de même que la mise en place de \ac{KPI} permettant la mesure et l'amélioration de l'efficacité de la stratégie.
+Cette stratégie, adoptant les principes de la sécurité par la conception (Security By Design) a par ailleurs fait 
+l'objet d'une présentation\autocite{devopsrex_denis_2019} lors du \href{https://2019.devopsrex.fr/}{DevOpsREX 219} 
+par Joy-Alexandra Denis, ex-RSSI du Groupe JCDecaux et maintenant RSSI de la filiale France du Groupe Ikea.
+
+Cependant, et contrairement aux préconisations du \ac{NIST}\autocite*{app_cont_sec_nist_2017}, le Groupe ne dispose pas
+d'une politique de sécurité dédié aux technologies de conteneurisation d'application et d'hébergement connexe. 
+
+De même, bien que l'on observe une forte sensibilisation au problématiques de sécurité des responsable produit / projet, 
+on constate que les populations de développeurs ne disposent pas d'un accompagnement spécifique institutionnalise au niveau
+du groupe sur ces problématiques.
+\newline Ainsi, le \ac{SAFECODE} recommande la formation continue des équipe de développement aux techniques de sécurisation
+de code et au développement sécurisé dans son rapport \citetitle{six_pillarss_devsecops_safecode_2020} de 
+\citedate{six_pillarss_devsecops_safecode_2020}.
+
+\newpage
+
+\subsection{Conception}
+
+Si l'on considère que la \emph{Gouvernance} constitue les fondations d'un développement applicatif sécurisé, la conception et 
+l'imagination de son architecture représente quant à lui l'ossature de cette dernière : une faiblesse dans la conception pourrait
+entraîner la compromission globale de l'application. 
+\newline Afin de prévenir ces risques, le modèle \ac{SAMM} propose trois axes de sécurisation : l'évaluation des risques, 
+la définition de prérequis de sécurité et la sécurisation de l'architecture.
+
+En 2019, l'équipe \ac{SSI} a réalisée une analyse de risque avec pour périmètre les développement réalisés pour le Groupe. 
+Cette exercice, fortement inspiré par la méthodologie EBIOS Risk Manager \autocite{ebios_rm_anssi_2018}, a notamment favorisé 
+la propagation du \emph{Security By Design} auprès des équipes de développement grâce à la présentation concrête des risques 
+encourus par leurs applications et l'impacte qu'aurais un attaque sur celles-ci.
+
+Cette même analyse de risque a permit de mettre à jours les prérequis de sécurité, tant logiciel qu'architecturaux, afin de les
+ajuster aux nouvelles technologies exploités par le Groupe et ses filiales. Ainsi, les politiques d’\ac{IAM}
+et de protection des données ont fait l’objet de mises à jours et intègrent maintenant les nouvelles règlementations Groupe 
+vis-à-vis des services et technologies Cloud exploités.
+
+\subsection{Implémentation}
