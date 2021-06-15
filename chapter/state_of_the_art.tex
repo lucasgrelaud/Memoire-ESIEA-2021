@@ -175,7 +175,29 @@ encourus par leurs applications et l'impacte qu'aurais un attaque sur celles-ci.
 
 Cette même analyse de risque a permit de mettre à jours les prérequis de sécurité, tant logiciel qu'architecturaux, afin de les
 ajuster aux nouvelles technologies exploités par le Groupe et ses filiales. Ainsi, les politiques d’\ac{IAM}
-et de protection des données ont fait l’objet de mises à jours et intègrent maintenant les nouvelles règlementations Groupe 
+et de protection des données ont fait l’objet de mises à jours et intègrent maintenant les nouvelles réglementations Groupe 
 vis-à-vis des services et technologies Cloud exploités.
 
 \subsection{Implémentation}
+
+La phase d'implémentation est l'une des phases les plus complexes dans un processus de développement. Il s'agit de l'étape
+qui occupe la majorité du temps de développement d'une application car nécessitant la rédaction de centaines de lignes de 
+code et tests associés.
+
+Afin de veiller au bon déroulement de cette phase, ces mêmes développeurs mettent en oeuvre divers outils tel que du versionnage
+de code, des tests automatiques et de la livraison automatique d'images\footnote{Ces outils de \ac{VCS}, \ac{CI}, \ac{CD} constituent
+dans les fait la base technique du Pipeline DevOps.} que nous pouvons exploiter afin d'appliquer les trois pratiques de sécurité 
+recommandé par la \ac{SAMM} : la détéction de défaut, la sécurisation des image et des déploiements.
+
+Ainsi, il est possible d'étendre l'usage des outils de test automatique en ajoutant en intégrant de nouveaux jeux de test, dédiées à la 
+détection d'erreurs d'implémentations.
+C'est ce que propose par exemple les outils de \ac{DAST}  et \ac{IAST} tel que le service 
+\href{https://www.rapid7.com/products/insightappsec/}{Rapid7 InsightAppSec} ou \href{https://www.acunetix.com/}{Acunetix d'Invicti}.
+
+L'intégration de nouvelle règles orienté sécurité dans les outils d'analyse statique de code est elle aussi possible et permet d'intéger
+des \ac{KPI} dans le contrôle qualité des développement.
+
+Enfin, la sécurisation des image et de leur déploiement passe par l'automatisation des processus de build, l'analyse des dépendance et des
+configuration pour finir par le blockage automatique de publication en cas de non conformité.
+
+\subsection{Vérification}
