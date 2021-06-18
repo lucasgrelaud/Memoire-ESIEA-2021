@@ -1,6 +1,5 @@
 %!TEX root = ../main.tex
 \chapter{Introduction}
-
 Cette mission de fin d'étude clôture trois années d'apprentissage réalisées au sein de l'équipe de sécurité informatique 
 du Groupe JCDecaux. Elle permet aussi de finaliser un travail de longue haleine visant à sécuriser et moderniser
 la chaîne de production des applications et outils exploités par le groupe et ses filiales.
@@ -8,15 +7,16 @@ la chaîne de production des applications et outils exploités par le groupe et 
 \section{Le Groupe JCDecaux}
 JCDecaux est un groupe industriel international fondée en France en 1964 par Jean-Claude Decaux et spécialisé dans 
 l'affichage publicitaire urbain. Principalement connue pour son mobilier urbain (Abribus, MUPI\footnote{Mobilier Urbain 
-Pour l'Information - Panneau d'affichage de 2m² dont l'une des faces est réservée pour les collectivités.}, Senior\footnote{
-Panneau d'affichage de 4m² en fixation murale ou aérienne.}), l'entreprise familiale a su se hisser en tant que leader de 
-la communication extérieure et est reconnue comme étant N°1 mondiale dans ce domaine depuis 2001. Le Chiffre d'Affaires du 
-groupe était de 3 890.2 M€ en 2019.
+Pour l'Information - Panneau d'affichage de 2m² dont l'une des faces est réservée pour les collectivités.}, Senior
+\footnote{Panneau d'affichage de 4m² en fixation murale ou aérienne.}), l'entreprise familiale a su se hisser en tant 
+que leader de la communication extérieure et est reconnue comme étant N°1 mondiale dans ce domaine depuis 2001. 
+\newline Son Chiffre d'Affaires pour l'année fiscale 2019 était de 3 890.2 M€.
 
-La notoriété du Groupe JCDecaux s'explique par sa présence dans plus de 80 pays répartis sur tous les continents, mais
-aussi et surtout par la qualité des services proposés tant auprès des collectivités locales qu'aux annonceurs.
-Cette recherche de qualité, d'esthétique et d'innovation dans le mobiliers urbains fait partie intégrante des valeurs de 
-l'entreprise et représente une réelle fierté pour ses 12 300 collaborateurs. 
+La notoriété du Groupe JCDecaux s'explique par sa présence dans plus de 80 pays répartis sur tous les continents mais
+aussi de par la qualité des services qu'il propose aux collectivités locales et à ses annonceurs.
+\newline Cette recherche de l'excellence esthétique et technique pour ses produits fait partie intégrante des 
+valeurs de l'entreprise. Ces valeurs sont une réelle fierté pour ses 12 300 collaborateurs et source d'innovation dans leurs
+projets. 
 
 \section{L'équipe Sécurité des Systèmes d'Informations}
 \begin{wrapfigure}{R}{0.27\textwidth} 
@@ -24,58 +24,68 @@ l'entreprise et représente une réelle fierté pour ses 12 300 collaborateurs.
     \centering Siège de Sainte Apolline
 \end{wrapfigure}
 En 2013, la \ac{DSI} Groupe s'est pourvu d'une équipe dédiée à la \ac{SSI}.
-Cette décision faisait suite à l'augmentation progressive des déploiements de systèmes de diffusion publicitaires numériques et
-de la montée en puissance de la diffusion programmatique.
+Le besoin d'une équipe dédié devenait en effet de plus en plus urgent suite à l'augmentation des ressources numérique
+exploitées par le Groupe; tant pour la diffusion publicitaire programmatique que les services numériques aux 
+collectivités (affichage, VLS).
 
 L'équipe \ac{SSI} Groupe de JCDecaux est localisée sur le plateau de la \ac{DSI}, au siège de Sainte-Apolline, Plaisir.
-Elle est actuellement composée de trois personnels internes (le \ac{RSSI}, un ingénieur \ac{SSI}, un apprenti) et est complémenté 
-par trois personnels externes en prestation.
-\newpage
-Les missions de cette équipe portent tant sur l'aspect organisationnel (Analyse de risque, gestion des politiques, sensibilisation),
-l' opérationnel (SOC, conformité, veille phishing) que sur la qualification technique des systèmes et infrastructures. L'équipe propose
-ainsi ces services au Groupe et à ses Filiales afin de sécuriser leurs systèmes.
+Elle est actuellement composée de trois personnels internes (le \ac{RSSI}, un ingénieur sécurité, un apprenti) et est 
+renforcée par trois personnels externes en prestation.
+\newline Ces missions s'articulent autours de trois thèmes : la sécurité organisationnelle (Analyse de risque, 
+politiques de sécurité, sensibilisation, \dots), la sécurité opérationnelle (SOC, conformité, veille phishing, \dots) et 
+la qualification technique des systèmes et infrastructures.
+\newline Spécificité de l'équipe \ac{SSI}, ses services sont offerts par le Groupe aux filiales afin de promouvoir la 
+sécurité informatique dans ces structures.
 
 \section{Publicité et développement applicatif}
-De par la complexité et la volatilité du secteur publicitaire (publicité programmatique, booking de campagne, diffusion numérique), 
-le Groupe JCDecaux se doit de disposer d'applications adaptées aux différents métiers de la publicité. 
-Pour la réalisation de ces applications, le Groupe dispose d'équipes de développement interne dans une majorité des \ac{BU} 
-de ses DSI (Groupe \& Filiales).
+Contraint par la complexité de son secteur d'activité, le Groupe JCDecaux à du se pourvoir en capacité de développement
+logiciel et embarqué pour répondre à ses problématiques métier (\eg Booking, préparation, diffusion).
+Ses équipes de développements sont réparties dans les différentes \ac{BU} des \ac{DSI} filiale et Groupe.
 
-Depuis 2016, ces équipes de développement  ont mis en place dans leur projet des méthodes agiles; afin 
-d'accélérer leurs temps de développement ainsi qu'améliorer la fiabilité et flexibilité de leurs applications.
-Ce changement de doctrine sur les méthodes de gestion de projet a permis une réduction de la complexité des applications produites
-grâce notamment à leur modularisation et favorise leurs réemplois pour tout ou partie dans les filiales du Groupe JCDecaux.
+Depuis 2016, les équipes de développement travaillent au mise en place de technique agiles et à l'intégration d'une 
+méthodologie DevOps dans leurs projets. Cet objectif, bientôt atteint, vise à accélérer les développements réalisés pour 
+l'entreprise tout en augmentant la flexibilité des applications réalisées. 
+
+Effet de bords bénéfique à ce changement de doctrine, on constate une augmentation de la fragmentation des applications
+(séparation en micro-services et dissociation Frontend applicatif du Backend). Cette fragmentation permet en effet une
+simplification des opérations de maintenances et favorise l'amélioration incrémentale des applications produites.
 
 \section{Automatisation et conteneurisation du Si}
-Conséquence de l'augmentation du nombre de composant applicatif dans le SI, le nombre de serveurs et machines virtuelles exploités par 
-la \ac{DSI} n'a cessé de croître durant les cinq dernières années.
+Conséquence de la modularisation de ses systèmes, le nombre de serveurs et machines virtuelles exploitées par les 
+\ac{DSI} a drastiquement augmenté ces cinq dernières années.
 
-Pour palier à la complexité de gestion induite par cette augmentation, la \ac{DSI} Groupe s'est pourvu en outils et méthodes pour 
-automatiser les tâches les plus courantes tel que l'initialisation des serveurs, le patch management ou encore le déploiement des
-applications. Cet outillage a commencé par le développement et la mise en production d'une \ac{CMP} reliée à notre \ac{CMDB}, réel atout 
-pour les équipes opérationnelles, puis la mise en place de script Ansible\footnote{Ansible est une plate-forme \ac{FOSS} développée par
-RedHat servant à la gestion de déploiement applicatif au travers d'une simple connexion \ac{SSH}}
+Pour tenter de palier aux problématiques d'administration induites par cette augmentation, les équipes de la \ac{DSI} 
+Groupe se sont pourvu en outils d'automatisation et méthodes de gestion pour optimiser leurs actions les plus récurrentes.
+Grâce à l'amélioration de la \ac{CMP}, sa liaison avec la \ac{CMDB} et l'intégration d'Ansible \footnote{Ansible est un 
+moteur d'automatisation du SI. Il permet l'automatisation de la configuration de système et du déploiement applicatif
+grâce à des playbook et est initialement développé par RedHat sous licence GNU GPL v3.0}, les équipes opérationnelles 
+de la DSI ont réussis à réduire la complexité de la gestion du \ac{SI} du Groupe.
 
-Depuis 2018, la \ac{DSI} Groupe et la \ac{DSI} France coopèrent dans un programme de déploiement des applications métier sous la forme
-de conteneurs sur une infrastructure Kubernetes managé sur \ac{AWS}, le Cloud Provider de JCDecaux. Il vise à la simplification
-déploiement applicatif en fournissant une couche d'abstraction unique et standard pour l'ensemble des équipes de développement du Groupe.
+Cependant, en 2019, un programme de qualification de la technologie d'orchestration de conteneur \ac{K8S} est monté 
+conjointement entre la \ac{DSI} Groupe et la \ac{DSI} France. L'objectif, à terme, est de fournir aux équipes de 
+développement la capacité de produire une application conteneurisée et directement déployable sur l'infrastructure.
 
-Ce programme est en phase de généralisation au sein du Groupe JCDecaux, mais un certain nombre de points relatif à la sécurisation des
-applications, conteneurs et cluster Kubernetes sont à résoudre avant de pouvoir mettre cette technologie à disposition des filiales.
+Le programme vise à évaluer une architecture de cluster \ac{K8S} hébergé sur l'infrastructure de notre Cloud 
+Provider \ac{AWS} et à l'intégration des outils de déploiement nécessaires. Il est actuellement sur le point de se 
+terminer et la préparation d'une ouverture globale aux équipes des deux \ac{DSI} est en cours.
+
+Une fois l'ouverture effective et l'analyse de l'efficacité de la plateforme réalisée pour les premiers mois, cette 
+dernière sera rendu accessible aux filiales en faisant la demande.
 
 \section{Problématiques de sécurité}
-Comme pour toute infrastructure hébergée par ou pour le Groupe JCDecaux, cette plateforme Kubernetes se doit de respecter un ensemble de 
-règles et de principes définies par les IT Security Policies\footnote{FR: Politiques de sécurité Informatique}. Ces documents, 
-regroupés par domaines (Réseau, Identité, Vulnérabilité, Données, etc..), régissent en effet l'aspect "Sécurité informatique" de tout projet
-réalisés par les équipes du Groupe et les guides dans leurs développements.
+Comme pour tous les projets d'infrastructure informatique du Groupe, la plateforme \ac{K8S} doit respecter un ensemble de
+règles et principes d'implémentation définies par les politiques du Groupe JCDecaux. La conformité de la plateforme aux
+\emph{IT Security Policies} (\ie Politiques de sécurité informatique en français) est quant à elle un prérequis pour tout
+déploiement en production. 
+\newline En effet, toute non-conformité vis-à-vie d'une \emph{IT Security Policies} (\eg Réseau, Identité, Donnée, etc..)
+pourrait entraîner l'arrêt de la mise en production de la plateforme jusqu'à ce qu'elle soit rendue conforme.
 
-Afin d'attester du niveau de conformité et de sécurité de la nouvelle plateforme, l'équipe \ac{SSI} à fait exécuter en externe un audit 
-technique de cette dernière. Réalisé en Juillet 2020 par XMCO, cet audit avait pour objectif d'étudier le niveau de sécurité courant de 
-l'environnement \ac{EKS} de JCDecaux (découverte et tentative d'exploitation de Vulnérabilités); ainsi que de fournir un certain nombre 
-de recommandations visant à assurer la sécurité de la plateforme suite à sa généralisation.
+Afin d'évaluer le niveau de conformité et de sécurité de la plateforme \ac{K8S}, l'équipe \ac{SSI} à fait réaliser un 
+audit technique par un prestataire externe compétent, ici XMCO, en juillet 2020.
+\newline Il nous permis de mettre en évidence les quelques faiblesses de la plateforme et d'obtenir de précieux conseils 
+sur les correctifs à appliquer sur la plateforme.
 
-Cet audit a permis de mettre en évidence de nombreuses de faiblesses et / ou défaut de conception de la plateforme Kubernetes. 
-Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ainsi émergés :
+Plusieurs chantiers ont ainsi émergés :
 \begin{enumerate}
     \item Cloisonnement de l'infrastructure
     \begin{itemize}
@@ -85,8 +95,8 @@ Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ai
     \item Contrôle des déploiements
         \begin{itemize}
         \item Intégration de protection contre objets dangereux
-        \item Application des PodSecurityPolicy
-        \item Ajout de règles OpenPolicyAgent aux contrôleurs d'admission
+        \item Durcissement des images
+        \item Contrôle de l'origine des images
     \end{itemize}
     \item Contrôle d'accès et secrets
     \begin{itemize}
@@ -94,7 +104,7 @@ Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ai
         \item Sécurisation du bastion SSH et des serveurs de rebonds
         \item Gestion et rotation des secrets
     \end{itemize}
-    \item Sensibilisation et validation
+    \item Validation des objets et Sensibilisation sécurité
     \begin{itemize}
         \item Mise en place de guides pour les développement / déploiement
         \item Sensibilisation des équipes
@@ -107,15 +117,15 @@ Suite à la restitution et analyse du compte-d'audit, plusieurs chantiers ont ai
 
 \section{La mission et ces objectifs}
 
-Comme énoncé précédemment, quatre chantiers de remédiation sont à réaliser afin de rendre la plateforme Kubernetes conforme aux politiques
-de sécurité informatique du groupe.
+Quatres chantiers sont donc à réaliser pour sécuriser la plateforme \ac{K8S} conforme aux politiques et sécurisée.
 
-Le chantier de cloisonnement de l'infrastructure Kubernetes ainsi que celui relatif au contrôle d'accès sont en cours de 
-finalisation. Ils ont en effet été lancés directement à la suite de l'audit.
-\linebreak Le chantier de contrôle des déploiements est partiellement réalisé et celui de la sensibilisation reste à démarrer. C'est donc 
-de à ces deux derniers que nous allons nous intéresser.
+Deux chantiers ont directement débuté à la suite de l'audit : le cloisonnement de la plateforme ainsi que l'amélioration
+du contrôle d'accès. Ces deux chantiers sont réalisés par l'équipe "Études \& Architecture" de la \ac{DSI} Groupe avec
+la supervision du \ac{RSSI}.
+\newline Il reste donc à traiter le chantier "Contrôle des déploiements" ainsi que le chantier "Validation des objets et 
+Sensibilisation sécurité". Ma mission s'inscrit donc dans la réalisation de ces deux chantiers.
 
-Les objectifs de ma mission de fin d'études sont exprimés de la façon suivante :
+Les objectifs de cette mission sont décrits de la façon suivante:
 \begin{enumerate}
     \item Objectifs organisationnels : 
     \begin{itemize}
@@ -134,10 +144,11 @@ Les objectifs de ma mission de fin d'études sont exprimés de la façon suivant
     \end{itemize}
 \end{enumerate}
 
-Ma mission est donc en réalité constituée de deux phases, chacune mêlant des objectifs organisationnel et techniques:
+Ma mission se présentera donc en deux phases distinctes, mêlant chacune des objectifs organisationnels et techniques:
 \begin{itemize}
-    \item Première phase : revoir et normaliser notre méthodologie de gestion de la sécurité des développements (applicatif et conteneur)
-    \item Second temps : fournir des éléments techniques et opérationnels visant à maintenir un bon niveau de sécurité dans l'exploitation 
-    de la plateforme Kubernetes. 
+    \item \textmd{Première phase :} Revue et standardisation de la gestion de la sécurité des développements (applicatif et 
+    conteneur).
+    \item Seconde phase : Mise à disposition d'éléments techniques et / ou opérationnels visant à maintenir un bon 
+    niveau de sécurité dans l'exploitation de la plateforme Kubernetes. 
 \end{itemize}
 
