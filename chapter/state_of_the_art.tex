@@ -1,28 +1,30 @@
 %!TEX root = ../main.tex
 \chapter{État de l'art}
+Deux sujets principaux seront abordés dans ce mémoire : la sécurisation d'une chaîne de production DevOps et la 
+gestion opérationnelle de la sécurité d'une infrastructure \ac{K8S}.
 
-Comme vous l'aurez compris, deux sujets principaux seront abordés dans ce mémoire : la gestion de la sécurité 
-informatique dans une chaîne de production DevOps et la gestion opérationnelle de la sécurité de cluster Kubernetes. 
+Il me semble donc pertinent de présenter les risques de sécurité associés à ces deux sujets indépendamment afin de 
+pouvoir mieux les définir et éventuellement démonter un certain recoupement avec d'autres problématiques de sécurité 
+informatique. 
 
-Il me semble donc pertinent de dresser un état de l'art pour ces deux sujets afin de permettre une meilleure 
-compréhension des de leurs problématiques, mais aussi afin à mieux appréhender les possibles solutions à ces dernières.
 
 \section{Évaluation des risques de sécurité}
+
 \subsection{Les risques du Pipeline DevOps}
+Dans la méthodologie DevOps, le \emph{Pipeline} est un concept hybride regroupant des notions théoriques et un socle 
+technique utilisés dans le cadre d'un développement logiciel. Ainsi, l'utilisation du terme \emph{Pipeline} fait aussi 
+bien référence au \ac{SDLC} \autocite[Ch.\ 6]{devops_for_dummies_freeman_forsgren_2019}, aux standards de développement
+\autocite[Ch.\ 9]{devops_for_dummies_freeman_forsgren_2019},qu'au processus de qualification et validation, ou bien même
+à l'ensemble des outils et services utilisés par les équipes de développement. 
+\newline Il s'agit donc d'un élément centrale dans la chaîne de production DevOps: tout problème impactant un élément du 
+\emph{Pipeline} aura des répercussions sur les autre et risque ainsi de mettre en péril les opérations de développement.
 
-Dans la méthodologie DevOps, le \emph{Pipeline} est un concept regroupant des notions théoriques et socle technique 
-utilisés dans le cadre d'un développement logiciel. Ainsi, l'utilisation du terme \emph{Pipeline} fait ainsi référence 
-au \ac{SDLC} \autocite[Ch.\ 6]{devops_for_dummies_freeman_forsgren_2019}, aux standards de développement
-\autocite[Ch.\ 9]{devops_for_dummies_freeman_forsgren_2019}, processus de qualification et validation, de même qu'à
-l'ensemble des outils et services utilisés par les équipes de développement. Il s'agit donc d'un élément centrale dans 
-la chaîne de production DevOps: tout problème impactant un élément du \emph{Pipeline} aura des répercussions sur les 
-autre et risque ainsi de mettre en péril les opérations de développement.
-
-Nous pouvons donc nous poser la question de la nature de ces risques et particulièrement de ceux relatifs à la sécurité
-du \emph{Pipeline}. Pour cela, nous allons utiliser comme support le \ac{SDLC} d'un logiciel afin de mieux cibler les 
+Nous pouvons donc nous poser la question de la nature des risques portés par le \emph{Pipeline}; et tout particulièrement
+ceux portant sur l'aspect sécurisation informatique.
+\newline Pour cela, nous allons utiliser comme support un \ac{SDLC} DevOps afin de mieux cibler les 
 problématiques de sécurité à chaque étape d'un projet.
 
-\vspace{2em}
+\vspace{0.5em}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{resources/img/devops_lifecycle.png}
@@ -73,20 +75,23 @@ Après une rapide analyse, voici les principaux risque qui se présente à nous 
     \end{enumerate}
 \end{multicols}
 
-On constate donc que majoritairement les risques sont portés par des erreurs lors du développement.
-Il s'agira donc d'un point d'attention dans la recherche de solutions.
+On constate donc qu'une majorité des risques protés par le \emph{Pipeline} DevOps sont lié à des erreurs commises lors
+du développement. Il s'agira donc d'un point d'attention dans la recherche de solutions.
 
 \subsection{Les risques d'un cluster Kubernetes}
+De par sa nature, l'orchestrateur \ac{K8S} et les nœuds qui constituent le cluster agissent comme une couche 
+d'abstraction entre l'infrastructure du Cloud Provider et les conteneurs (aussi appelés \emph{Pods}) qu'il héberge.
+\newline Il est cependant important de noter que quelques problématique de sécurité (\eg Réseau, accès API, chiffrement 
+du traffic \emph{etcd}, \dots) sont tout de même à addresser. C'est en tout cas ce que recommande la documentation 
+officiel de \ac{K8S}\autocite{k8s_security_2021}.
 
-Bien que l'orchestrateur Kubernetes constitue une couche d'abstraction entre l'infrastructure physique qui 
-l'héberge et les conteneurs qu'il fait fonctionner, les risques qu'il porte sont similaires à une infrastructure
-(virtualisé ou non) classique. Il est par exemple important de pouvoir lister les instances de conteneur (a.k.a. 
-Pod) en cours d'exécution, leur version ainsi que la présence de vulnérabilité; de pouvoir assurer un contrôle
-d'accès approprié ou bien de pouvoir assurer la sécurité du réseau du cluster. 
+Nous nous retrouvons donc avec les risques propres au cluster \ac{K8S} qui, dans un certain sens, partage des similitudes
+avec les risques protés par des infrastructure virtualisés classique : Gestion du \ac{RBAC} et de l'authentification, 
+gestion des secrets, qualité de service, etc..
 
-Cependant, étant donné que le cluster se comporte comme une couche d'abstraction, il hérite de problématiques
-de sécurité qui lui sont propre. C'est ainsi qu'il est nécessaire de pouvoir surveiller les groupes de ressources
-(Namespaces), de contraindre des configurations de déploiement ou l'origine des conteneurs.
+Cependant, le fonctionnement d'un conteneur est différent d'une machine virtuelle : le kernel est partagé entre l'hôte et
+le conteneur. De nouveaux risques apparaissent d'isolation d'environnements d'execution et d'accès à des ressources 
+sensible apparaissent donc. 
 
 \newpage
 
