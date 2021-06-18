@@ -97,22 +97,25 @@ sensible apparaissent donc.
 
 \section{Recherche de solutions}
 
-Ayant maintenant identifié les risques encourus par notre Pipeline DevOps et l'infrastructure Kubernetes associée,
-nous pouvons nous intéresser aux solutions permettant leurs réductions.
+Ayant identifié les risques encourus par notre Pipeline DevOps et l'infrastructure Kubernetes associée,
+nous pouvons maintenant nous intéresser aux solutions permettant leurs réductions.
 
 Pour cela nous allons utiliser comme support la méthodologie décrite dans le \citetitle{samm_v2.0_owasp_project_2021}
 \autocite{samm_v2.0_owasp_project_2021}
-de l'\citeauthor{samm_v2.0_owasp_project_2021}. Cette méthodologie mit à jours en \citedate{samm_v2.0_owasp_project_2021}
-fait office de référence pour l'analyse et l'amélioration de la sécurité des logiciels développés en entreprise; elle est
-particulièrement recommandé dans le cadre de développement Agiles et / ou DevOps.
+de l'\citeauthor{samm_v2.0_owasp_project_2021}. Cette méthodologie, mit à jours en 
+\citedate{samm_v2.0_owasp_project_2021}, fait office de référence pour l'analyse et l'amélioration de la sécurité des 
+logiciels développés en entreprise.
+\newline Elle est particulièrement recommandé dans le cadre de développement Agiles et / ou \linebreak DevOps.
 
 \subsection{Le modèle de référence}
 
 Le \ac{SAMM} est, comme son nom l'indique, un modèle permettant de quantifier le niveau de maturité d'un processus de 
-développement logiciel sur le plan de la sécurité informatique. Cette quantification est réalisée sur la base de 
-différentes pratiques de sécurité chacune regroupés dans des fonctions métier et notés sur une échelle de trois points 
-avec en point initial zéro implicite. Enfin, les pratiques de sécurité dispose de deux activités permettant de qualifier
-le niveau de maturité sur ses principaux thèmes.
+développement logiciel sur le plan de la sécurité informatique. 
+
+Cette quantification est réalisée sur la base de différentes pratiques de sécurité chacune regroupés dans des fonctions 
+métier et notés sur une échelle de trois points avec en point initial zéro implicite. 
+\newline Ces pratiques de sécurité dispose elles même de deux activités permettant de qualifier le niveau de maturité 
+d'une entreprises sur les principaux thèmes associée à la pratique.
 
 Le \ac{SAMM} peut donc être représenté de la manière suivante :
 
@@ -140,27 +143,28 @@ Le dernier niveau constitue quant à lui l'objectif à atteindre.
 \subsection{Gouvernance}
 
 La fonction \emph{Gouvernance}, telle que présentée dans le modèle \ac{SAMM}, représente le point de départ de la 
-mise en œuvre de la sécurité informatique dans le cadre de développement. C'est en effet grâce sur la base des 
+mise en œuvre de la sécurité informatique dans le cadre de développement. C'est en effet sur la base des 
 trois pratiques de sécurité associés (\emph{Stratégie \& Métriques}, \emph{Politiquer \& Conformité}, 
 \emph{Formation \& Conseils}) que seront issue l'ensemble des actions techniques et organisationnels des autres
 fonctions métier.
 
 La \emph{Gouvernance} de la sécurité des développements est un sujet déjà encré dans la philosophie du Groupe JCDecaux.
-Ainsi, il dispose d'un niveau de maturité avancé grâce notamment à la mise en place de politiques de sécurité dédiées
-au développement et leur application, la formation et intégration d'interlocuteurs sensibilisé aux risques de sécurité
+Il dispose déjà d'un niveau de maturité avancé grâce à la mise en place de politiques de sécurité dédiées au 
+applications et leur développement; à la formation et intégration d'interlocuteurs sensibilisé aux risques de sécurité;
 de même que la mise en place de \ac{KPI} permettant la mesure et l'amélioration de l'efficacité de la stratégie.
-Cette stratégie, adoptant les principes de la sécurité par la conception (Security By Design) a par ailleurs fait 
-l'objet d'une présentation\autocite{devopsrex_denis_2019} lors du \href{https://2019.devopsrex.fr/}{DevOpsREX 219} 
+\newline Cette stratégie, adoptant les principes de la sécurité par la conception (Security By Design) a par ailleurs 
+fait  l'objet d'une présentation\autocite{devopsrex_denis_2019} lors du \href{https://2019.devopsrex.fr/}{DevOpsREX 219} 
 par Joy-Alexandra Denis, ex-RSSI du Groupe JCDecaux et maintenant RSSI de la filiale France du Groupe Ikea.
 
 Cependant, et contrairement aux préconisations du \ac{NIST}\autocite*{app_cont_sec_nist_2017}, le Groupe ne dispose pas
 d'une politique de sécurité dédié aux technologies de conteneurisation d'application et d'hébergement connexe. 
 
 De même, bien que l'on observe une forte sensibilisation aux problématiques de sécurité des responsables produit / 
-projet, on constate que les populations de développeurs ne disposent pas d'un accompagnement spécifique 
-institutionnalise au niveau du groupe sur ces problématiques.
-\newline Ainsi, le \ac{SAFECODE} recommande la formation continue des équipes de développement aux techniques de 
-sécurisation de code et au développement sécurisé dans son rapport \citetitle{six_pillarss_devsecops_safecode_2020} de 
+projet, on constate que les populations de développeurs ne disposent pas d'un accompagnement spécifique et
+institutionnalise au niveau du groupe sur ces \linebreak problématiques.
+
+Ainsi, le \ac{SAFECODE} recommande la mise en place d'une formation continue des équipes de développement aux techniques
+de sécurisation de code et au développement sécurisé dans son rapport \citetitle{six_pillarss_devsecops_safecode_2020} de 
 \citedate{six_pillarss_devsecops_safecode_2020}.
 
 \newpage
@@ -168,81 +172,103 @@ sécurisation de code et au développement sécurisé dans son rapport \citetitl
 \subsection{Conception}
 
 Si l'on considère que la \emph{Gouvernance} constitue les fondations d'un développement applicatif sécurisé, la 
-conception et l'imagination de son architecture représente quant à lui l'ossature de cette dernière : une faiblesse dans 
+conception et l'imagination de son architecture représente quant à elle l'ossature de cette dernière : une faiblesse dans 
 la conception pourrait entraîner la compromission globale de l'application. 
-\newline Afin de prévenir ces risques, le modèle \ac{SAMM} propose trois axes de sécurisation : l'évaluation des risques, 
+\newline Afin de prévenir ces risques, le modèle \ac{SAMM} identifie trois axes de sécurisation : l'évaluation des risques, 
 la définition de prérequis de sécurité et la sécurisation de l'architecture.
 
-En 2019, l'équipe \ac{SSI} a réalisée une analyse de risque avec pour périmètre les développements réalisés pour le 
-Groupe. 
-Cet exercice, fortement inspiré par la méthodologie EBIOS Risk Manager \autocite{ebios_rm_anssi_2018}, a notamment 
-favorisé la propagation du \emph{Security By Design} auprès des équipes de développement grâce à la présentation concrête
-des risques encourus par leurs applications et l'impacte qu'aurait une attaque sur celles-ci.
+Depuis 2019, toutes les applications produites au sein du Groupe JCDecaux font l'objet d'une analyse de risque 
+(voir annexe \ref{appendix:securitybydesign}) par les équipes de développement dès l'étude de faisabilité. 
+Cette analyse de risque et les prérequis de sécurité associé seront ensuite soumis à validation par l'équipe \ac{SSI} 
+qui émettra des recommandations si cela est nécessaire.
 
-Cette même analyse de risque a permis de mettre à jours les prérequis de sécurité, tant logiciel qu'architecturaux, afin 
-de les ajuster aux nouvelles technologies exploitées par le Groupe et ses filiales. Ainsi, les politiques d’\ac{IAM}
-et de protection des données ont fait l’objet de mises à jours et intègrent maintenant les nouvelles réglementations 
-Groupe vis-à-vis des services et technologies Cloud exploités.
+Si certain prérequis de sécurité sont directement dépendent directement de l'application développée, il est important 
+de noter que la \ac{SAMM} et le \ac{SAFECODE}\autocite[p. 15]{fundamental_pract_sec_soft_safecode_2018} recommandent la 
+mise à disposition des équipes de prérequis génériques pour les développement.
+\newline Dans le cas du Groupe JCDecaux, ces recommandations sont présenté sous la forme de onze \emph{Golden Rules}
+rédigés en anglais et disponible pour toutes les équipes de développement du Groupe.
+
+Enfin, il conseillé de définir un set d'architectures applicative standard pour les développement. Cela peut prendre la 
+forme d'une architecture Type ou d'une configuration modèle d'un framework .
 
 \subsection{Implémentation}
+L'implémentation, étape la plus chronophage dans un projet de développement, représente la principale activité des 
+développeurs. C'est durant cette étape que ces derniers produisent le code source et ressources qui constituerons 
+l'application une fois compilée.
 
-L'implémentation est l'une des phases les plus complexes dans un processus de développement. Il s'agit de l'étape
-qui occupe la majorité du temps de développement d'une application car nécessitant la rédaction de centaines de lignes 
-de code et tests associés.
+Afin de disposer d'une base commune de développement et de process, ces même développeurs mettent en œuvre divers outils
+à unifier les environnements et d'automatiser le plus d'actions. On retrouve donc des outils de versionnage de code, 
+d'execution de tests automatiques ou bien encore de compilation et livraison automatique d'images\footnote{Ces outils de \ac{VCS}, 
+\ac{CI}, \ac{CD} constituent dans les faits la base technique du Pipeline DevOps.}.
 
-Afin de veiller au bon déroulement de cette phase, ces mêmes développeurs mettent en œuvre divers outils tel que du 
-versionnage de code, des tests automatiques et de la livraison automatique d'images\footnote{Ces outils de \ac{VCS}, 
-\ac{CI}, \ac{CD} constituent dans les faits la base technique du Pipeline DevOps.} que nous pouvons exploiter afin 
-d'appliquer les trois pratiques de sécurité recommandé par la \ac{SAMM} : la détection de défaut, la sécurisation des 
-images et des déploiements.
+Ces outils étant performant et versatiles, la méthodologie \ac{SAMM} nous propose de les exploiter et ou complémenter 
+afin de réaliser des opération d'évaluation de sécurité.
+\newline Ainsi en intégrant des analyseurs de dépendances et en rajoutant des règles dans les profils d'évaluation de 
+qualité de code, il est possible de drastiquement réduire le nombre de vulnérabilité d'un programme.
+Dans le cas où l'intégration de ses règles seraient trop coûteuses ou impossible, l'exploitation d'outils dédiés est 
+envisageable. Ces outils sont des \ac{SAST}. 
 
-Ainsi, il est possible d'étendre l'usage des outils de test automatique en ajoutant en intégrant de nouveaux jeux de 
-test, dédiées à la détection d'erreurs d'implémentations.
-C'est ce que proposent par exemple les outils de \ac{DAST}  et \ac{IAST} tel que le service 
-\href{https://www.rapid7.com/products/insightappsec/}{Rapid7 InsightAppSec} ou \href{https://www.acunetix.com/}
-{Acunetix d'Invicti}.
+Autre point important lors de l'implémentation, une gestion appropriée des configuration et des secrets est requise pour
+toute conception d'application conteneurisée. En effet, il est primordiale de stocker ses configurations et secrets dans
+un référentiel unique et auditable. Il en va de même pour les images compilée.
 
-L'intégration de nouvelle règles orienté sécurité dans les outils d'analyse statique de code est elle aussi possible et 
-permet d'intéger des \ac{KPI} dans le contrôle qualité des développements.
-
-Enfin, la sécurisation des images et de leur déploiement passe par l'automatisation des processus de build, l'analyse 
-des dépendances et des configuration pour finir par le blocage  automatique de publication en cas de non-conformité.
+Cette centralisation des ressources par type permettra un meilleur suivi des défauts et par la suite la mise en place 
+de \ac{KPI}. Ces \ac{KPI} pourront servir à l'évaluation des performances de sécurité des application, mais aussi au 
+ciblage des équipes nécessitant d'être accompagnée sur ce sujet.
+\newline L'objectif final étant de pouvoir faire évoluer continuellement la gestion de la sécurité des applications grâce
+à ces \ac{KPI}.
 
 \subsection{Vérification}
+Partie intégrante du développement applicatif, la phase de validation vise à tester toutes les fonctionnalités de 
+l'application pour découvrir d'éventuellement dysfonctionnements.
+\newline Dans le cadre de la méthodologie \ac{SAMM}, cette étape se présente sous la forme de trois pratiques de sécurité.
 
-Souvent mise en avant, la vérification (ou validation) sécurité du projet représente la dernière étape avant la mise en 
-production de l'application. 
+Dans un premier temps, il sera nécessaire de analyser l'architecture de l'application et de son implémentation dans le 
+\ac{SI} à la recherche de vulnérabilités connues. Si aucun problème n'est détecté et que les mécanismes de sécurité de 
+l'application sont correct, nous pourrons passer à l'étape suivante.
+\newline Dans le cas contraire, les développeurs devront revoir leur copie.
 
-Selon le \ac{SAMM}, cette phase doit être constituée d'au moins six actions de sécurité : validation de l'architecture
-et remédiation de vulnérabilité le cas échéant, tests d'intrusion et de charge, validation des points de contrôle et des
-résultats des tests automatique.
+Dans un second temps, voir éventuellement en parallèle de l'étape précédente, il sera nécessaire de faire exécuter des 
+test d'intégration continue afin de valider le bon comportement de l'application vis à vis de vulnérabilité connue.
+Des test de charge et d'attaque sur la logique métier de l'application sont par ailleurs fortement recommandé.
+\newline Des solutions de \ac{DAST}  et \ac{IAST} tel que les services \href{https://www.rapid7.com/products/insightappsec/}
+{Rapid7 InsightAppSec} et \href{https://www.acunetix.com/}{Acunetix d'Invicti} peuvent donc se montrer fort intéressantes.
 
-Or on constate que, pour le Groupe JCDecaux et ses partenaires, lorsque les actions de vérification techniques sont
-réalisés, la validation et la mise à l'épreuve de l'efficacité de l'architecture est souvent incomplète. Cela a pour 
-effet d'augmenter le risque d'attaque par canal secondaire, la sécurité d'une application étant assurée par le composant
-le plus faible de l'architecture .
+Enfin, si et seulement si aucun problème n'a été détecté, alors nous pourrons lancer un audit de sécurité (aussi appelé 
+\emph{pentest} pour Penetration Testing). Cet audit devra être réalisé sur une instance d'application iso-production afin
+de coller le plus possible à l'intégration finale. Un environnements de d'intégration ou de pré-production est donc le 
+plus adapté.
+
+Pour le Groupe JCDecaux, on constate une certaine déviation vis à vis des recommandations de la méthodologie \ac{SAMM}.
+Si la validation de l'architecture et les audits de sécurité sont bien réalisés, la portion \ac{DAST} / {IAST} n'est 
+quand à elle pas présente.
 
 \subsection{Opérations}
-Dernière fonction métier proposé par la méthodologie \ac{SAMM}, la gestion opérationnelle de la sécurité s'articule 
-autours thèmes les plus répandus dans les équipes de \ac{SSI}.
+Si jusqu'ici les différentes solutions proposés par la méthodologie \ac{SAMM} et le groupe \ac{SAFECODE} portaient sur
+la sécurisation du \emph{Pipeline} DevOps, cette dernière fonction métier se concentrera essentiellement la sécurisation
+de l'exploitation de l'application développé, et donc du cluster l'hébergeant.
 
-Le premier aspect de la sécurité opérationnelle porte sur la gestion des incidents, de leur détection et remédiation.
-La \ac{SAMM} propose, par exemple de renforcer la collecte de log applicatif, réseau et système afin d'améliorer les 
-capacités de détections d'intrusion. 
-\newline Elle précise toutefois le besoin d'identifier les acteurs; ainsi que leur rôle, qui seront chargés de la 
-remédiation. 
-Cette identification, accompagnée d'une documentation la plus exhaustive des procédures, formalisera les opérations de 
-réponse à incident et accélérera l'application de correctifs de sécurité sur les applications et systèmes.
+Le premier aspect de sécurité opérationnelle à addresser portent sur la façon dont un conteneur fonctionne sur le cluster.
+Ainsi, il est nécessaire de pouvoir durcir les configuration d'exécutions des pods, soit en fournissant des outils de 
+configuration automatique, soit en  appliquant des point de contrôle bloquant lors du déploiements d'un conteneur sur un 
+cluster.
 
-Le second aspect de sécurité opérationnel porte quant à lui sur la gestion de la sécurité de ses environnements, de 
-production ou non.
-\newline La \ac{SAMM} rappel la nécessitée d'une gestion appropriée des correctifs de sécurité de ses infrastructures. 
-Cela vaut tant pour les contrôleurs et nœuds des clusters Kubernetes que pour les applications qu'ils hébergent. 
-\newline Un billet de blog du responsable produit "Container Security" de Google explique d'ailleurs très bien l'intérêt
-du Patch Managment dans le cadre de conteneur et l'avantage de ces derniers sur ce sujet.\autocite{google_cont_sec_2018}
+Deuxième aspect d'importance, la connaissance des pods en cours d'exécutions sur un cluster ainsi que la connaissance de
+leur état de vulnérabilité est primordiale à la sécurisation du cluster. Ainsi, comme pour les infrastructure "classiques",
+l'exploitation de scanner de vulnérabilité est une nécessitée pour disposer d'informations suffisante et fiable pour
+avoir une gestion appropriée des patchs de sécurité.
 
-Enfin, les dernières recommandations apportées par la méthodologie \ac{SAMM} portent sur la protection des données et le
-décommissionnèrent / remplacement des systèmes vieillissant.
+De même que le besoin se fait sentir pour les infrastructure virtualisés, la gestion des incidents sur les clusters doit 
+être efficace et proactive. Cela sous-entends d'avoir à disposition une procédure décrite de manière exhaustive et connue
+par les équipes en lien avec la plateforme.
+\newline La premières source d'information pour la gestion d'incidents sera les logs applicatifs et issues du cluster, 
+mais ceux-ci peuvent être complémenter par des informations liés à runtime du conteneur. C'est par exemple ce que propose
+la solution \href{https://sysdig.com/opensource/falco/}{Falco de sysdig}.
+
+Enfin, une bonne gestion des donnée vas de paire avec la gestion du cycle de vie de l'application.
+\newline Toute donnée exploitée par un conteneur doit être d'une utilité légitime et chiffrée dans le cas où elles sont
+à caractère sensible.
+ 
 
 \newpage
 
