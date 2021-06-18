@@ -213,4 +213,25 @@ et la mise à l'épreuve de l'efficacité de l'architecture est souvent incompl�
 secondaire, la sécurité d'une application étant assurée par le composant le plus faible de l'architecture .
 
 \subsection{Opérations}
-Dernière fonction métier proposé par la méthodologie \ac{SAMM}
+Dernière fonction métier proposé par la méthodologie \ac{SAMM}, la gestion opérationnelle de la sécurité s'articule autours thèmes les plus
+répendus dans les équipes de \ac{SSI}.
+
+Le premiers aspect de la sécurité opérationnelle porte sur la gestion des incident, de leur détéction et remédiation.
+La \ac{SAMM} propose, par exemple de renforcer la collecte de log applicatif, réseau et système afin d'améliorer les capacités de détections
+d'intrusion. 
+\newline Elle précise toutefois le besoin d'identifier les acteurs; ainsi que leur rôles, qui seront chargés de la remédiation. 
+Cette identification, accompagnée d'une documentation la plus exhaustive des procédure, formalisera les opérations de réponse à incident 
+et accélérera l'application de correctifs de sécurité sur les applications et systèmes.
+
+Le second aspect de sécurité opérationnel porte quant à lui sur la gestion de la sécurité de ses environnements, de production ou non.
+\newline La \ac{SAMM} rappel la nécessitée d'une gestion approprié des correctifs de sécurité de ses infrastructure. Cela vaut tant pour les 
+contrôleurs et nœuds des cluster Kubernetes que pour pour les application qu'ils hébergent. 
+\newline Un billet de blog du responsable produit "Container Security" de Google explique d'ailleurs très bien l'intérêt du Patch Managment
+dans le cadre de conteneur et l'avantage de ces derniers sur ce sujet.\autocite{google_cont_sec_2018}
+
+Enfin, les dernières recommandations apportées par la méthodologie \ac{SAMM} portent sur la protection des données et le décommissionnèrent 
+/ remplacement des systèmes vieillissant.
+
+\newpage
+
+\section{}
