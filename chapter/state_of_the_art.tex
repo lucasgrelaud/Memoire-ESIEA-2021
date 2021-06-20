@@ -244,32 +244,107 @@ Si la validation de l'architecture et les audits de sécurité sont bien réalis
 quand à elle pas présente.
 
 \subsection{Opérations}
-Si jusqu'ici les différentes solutions proposés par la méthodologie \ac{SAMM} et le groupe \ac{SAFECODE} portaient sur
+Si jusqu'ici les différentes solutions proposées par la méthodologie \ac{SAMM} et le groupe \ac{SAFECODE} portaient sur
 la sécurisation du \emph{Pipeline} DevOps, cette dernière fonction métier se concentrera essentiellement la sécurisation
-de l'exploitation de l'application développé, et donc du cluster l'hébergeant.
+de l'exploitation de l'application développée, et donc du cluster l'hébergeant.
 
-Le premier aspect de sécurité opérationnelle à addresser portent sur la façon dont un conteneur fonctionne sur le cluster.
-Ainsi, il est nécessaire de pouvoir durcir les configuration d'exécutions des pods, soit en fournissant des outils de 
-configuration automatique, soit en  appliquant des point de contrôle bloquant lors du déploiements d'un conteneur sur un 
+Le premier aspect de sécurité opérationnelle à résoudre porte sur la façon dont un conteneur fonctionne sur le cluster.
+Ainsi, il est nécessaire de pouvoir durcir les configurations d'exécutions des pods, soit en fournissant des outils de 
+configuration automatique, soit en  appliquant des point de contrôle bloquant lors du déploiement d'un conteneur sur un 
 cluster.
 
 Deuxième aspect d'importance, la connaissance des pods en cours d'exécutions sur un cluster ainsi que la connaissance de
-leur état de vulnérabilité est primordiale à la sécurisation du cluster. Ainsi, comme pour les infrastructure "classiques",
-l'exploitation de scanner de vulnérabilité est une nécessitée pour disposer d'informations suffisante et fiable pour
+leur état de vulnérabilité est primordial à la sécurisation du cluster. Ainsi, comme pour les infrastructures "classiques",
+l'exploitation de scanner de vulnérabilité est une nécessitée pour disposer d'informations suffisantes et fiables pour
 avoir une gestion appropriée des patchs de sécurité.
 
-De même que le besoin se fait sentir pour les infrastructure virtualisés, la gestion des incidents sur les clusters doit 
-être efficace et proactive. Cela sous-entends d'avoir à disposition une procédure décrite de manière exhaustive et connue
+De même que le besoin se fait sentir pour les infrastructures virtualisées, la gestion des incidents sur les clusters doit 
+être efficace et proactive. Cela sous-entend d'avoir à disposition une procédure décrite de manière exhaustive et connue
 par les équipes en lien avec la plateforme.
-\newline La premières source d'information pour la gestion d'incidents sera les logs applicatifs et issues du cluster, 
-mais ceux-ci peuvent être complémenter par des informations liés à runtime du conteneur. C'est par exemple ce que propose
-la solution \href{https://sysdig.com/opensource/falco/}{Falco de sysdig}.
 
-Enfin, une bonne gestion des donnée vas de paire avec la gestion du cycle de vie de l'application.
-\newline Toute donnée exploitée par un conteneur doit être d'une utilité légitime et chiffrée dans le cas où elles sont
-à caractère sensible.
+La première source d'information pour la gestion d'incidents sera les logs applicatifs et issues du cluster, 
+bien que ceux-ci peuvent être complémentés par des informations liées au runtime du conteneur. C'est par exemple ce que 
+propose la solution \href{https://sysdig.com/opensource/falco/}{Falco de sysdig}.
+\newline La création d'un inventaire exhaustif des pods en cours d'execution et de leur état de vulnérabilité
+constituera quant à lui la deuxième source d'information pour la gestion opérationnelle de la sécurité des clusters 
+\ac{K8S}.
+
+Enfin, un travail proactif de gestion des systèmes dit \emph{legacy} et / ou en fin de vie devra être réalisé; pour les
+mêmes raisons qu'il est réalisé sur l'est infrastructure physique et virtualisés.
  
 
 \newpage
 
 \section{Analyse et critique des solutions}
+
+Pour cette étude, nous nous sommes appuyé sur l'exploitation de deux principaux documents de référence : le rapport 
+\citetitle{fundamental_pract_sec_soft_safecode_2018} (SAFECode) et la documentation officielle de la méthodologie 
+\citetitle{samm_v2.0_owasp_project_2021} (OWASP Project). 
+
+Nous pouvons donc nous questionner sur la correspondence des solutions apportés par ces documents et les 
+problématiques posés par notre mission.
+
+\subsection{Les sources de l'étude}
+Comme présenté ci-dessus, deux principales sources ont été utilisés lors de cette étude, les sources secondaires servant
+à appuyer un point ou donner des éléments de réponse complémentaires.
+
+Ce faible nombre s'explique par le fait que ces deux ressources font office de référence pour une majorité des études et 
+guides d'implémentation de sécurité dans un processus de développement applicatif. On retrouve en effet référence à ces
+documents dans les publications \citetitle{ssdf_nist_2012} (\ac{NIST}) et \citetitle{sage_carnegie_mellon_university_2021}
+(Carnegie Mellon University Software Engineering Institute) qui m'ont servie de support d'implémentation dans mes missions.
+
+C'est donc  pourquoi j'ai fait le choix de concentrer la recherche des solutions aux problématiques de ma mission autours
+de ces deux seuls documents.
+
+\subsection{Les solutions présentées}
+Les solutions présentées dans cette étude de l'état de l'art de la sécurisation d'un processus de développement et 
+déploiement applicatif sont agnostiques des technologie et techniques exploité. Elles sont en effet formulées de façon à
+pouvoir être mise en œuvre tant dans un contexte de développement classique que DevOps.
+\newline De ce fait, il sera nécessaire d'intégrer et d'adapter ces solutions aux \emph{Pipelines} présent au sein 
+du Groupe JCDecaux et de ses filiales.
+
+De plus, cette étude nous présente un nombre conséquent de solutions, portant tant sur des sujets organisationnels que
+techniques. Une sélection des solutions devra donc être réalisée afin que celles-ci correspondent au mieux aux problématiques
+de ma mission et puissent être réalisé dans cette dernière.
+
+Une attention particulière devra être porté sur les projets en cours de réalisation au sein de la \ac{DSI} Groupe afin de mieux 
+coordonner les actions; notamment vis-à-vis des sujets liés à l'analyse de risque. 
+
+\newpage
+
+
+\subsection{Impact du COVID-19}
+Comme pour beaucoup d'entreprises du secteur de la publicité, la crise du COVID-19 a eu un impact considérable sur le
+marché. Cet impact s'exprime par une chute massive des commandes de diffusion de campagnes publicitaire et donc du 
+chiffre d'affaires.
+\newline Pour le Groupe JCDecaux, cette perte est estimée à -40,6\% du chiffre d'affaires pour l'année fiscale 2020; soit
+une perte 2 311,8 millions d'euro\autocite{jcdecaux_resultfin_2020}.
+
+Afin de réduire les effets de cette perte d'activité, des mesures de restriction des coûts et de sauvegarde d'emplois 
+ont été mises en œuvres au sein du Groupe et de ses filiales. L'ensemble des équipes du Groupe et une majorité des équipes
+de la filiale France se sont donc retrouvés en activité partielle (70\% temps travaillé et 30\% de chômage partielle) 
+dès le mois de Mars 2020. Ces mesures sont encore effectives à lors de la rédaction de ce mémoire.
+
+\section{Conclusion et solutions retenues}
+Grâce à cette étude d'état de l'art portant sur la sécurité des développement et déploiement applicatif, nous pouvons 
+constater que nombreuses sont les solutions aux problématiques posées par le sujet. 
+
+En effet, ce sujet est à l'étude par des organismes de recherche, des administrations et organisations à but 
+non lucratifs depuis près de quinze ans. Nous disposons donc d'un certain recul sur le sujet et ce même si les 
+problématiques de conteneurisation sont relativement nouvelles ( +/- 5 ans).
+C'est par ailleurs pourquoi certaines de ces problématiques sont déjà adressées pour le Groupe.
+
+Cependant, compte tenu du contexte dans lequel est réalisé ce mémoire, certaines solutions qui devraient être mises en 
+œuvre nous pourront pas être intégralement implémenté à cause de leur coût ou par manque de ressources (humaines / 
+temps).
+
+C'est pourquoi nous allons nous concentrer sur la résolution des solutions suivantes : 
+\begin{itemize}
+    \item Création d'un processus de qualification sécurité des applications
+    \item Création de politiques de sécurité dédiées aux conteneurs et à leur déploiement
+    \item Mise à disposition d'outils d'évaluation de la sécurité de conteneurs
+    \item Création d'un processus opérationnel de gestion de la sécurité des clusters
+    \item Mise à disposition d'outils d'inventaire et de suivi de vulnérabilité pour les clusters
+    \item Évaluation de la sécurité de la plateforme de gestion des configurations
+    \item Durcissement des conteneurs et de leurs déploiements
+\end{itemize}
