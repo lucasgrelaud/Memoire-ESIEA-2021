@@ -16,8 +16,8 @@ technique utilisés dans le cadre d'un développement logiciel. Ainsi, l'utilisa
 bien référence au \ac{SDLC} \autocite[Ch.\ 6]{devops_for_dummies_freeman_forsgren_2019}, aux standards de développement
 \autocite[Ch.\ 9]{devops_for_dummies_freeman_forsgren_2019},qu'au processus de qualification et validation, ou bien même
 à l'ensemble des outils et services utilisés par les équipes de développement. 
-\newline Il s'agit donc d'un élément centrale dans la chaîne de production DevOps: tout problème impactant un élément du 
-\emph{Pipeline} aura des répercussions sur les autre et risque ainsi de mettre en péril les opérations de développement.
+\newline Il s'agit donc d'un élément central dans la chaîne de production DevOps: tout problème impactant un élément du 
+\emph{Pipeline} aura des répercussions sur les autres et risque ainsi de mettre en péril les opérations de développement.
 
 Nous pouvons donc nous poser la question de la nature des risques portés par le \emph{Pipeline}; et tout particulièrement
 ceux portant sur l'aspect sécurisation informatique.
@@ -36,62 +36,62 @@ problématiques de sécurité à chaque étape d'un projet.
 Après une rapide analyse, voici les principaux risque qui se présente à nous :
 \begin{multicols}{2}
     \begin{enumerate}
-        \item Plan :
+        \item Planification :
         \begin{itemize}
             \item Intégration d'une technologie vulnérable ou non maintenue
             \item Non-intégration de correctifs pour une vulnérabilité remontée
         \end{itemize}
-        \item Create :
+        \item Conception :
         \begin{itemize}
             \item Développement de code faillible
             \item Mauvaise configuration du framework ou dépendances
         \end{itemize}
-        \item Verify :
+        \item Validation :
         \begin{itemize}
             \item Jeux de test incomplets
             \item Absence d'audit de sécurité applicative
         \end{itemize}
-        \item Package :
+        \item Conditionnement :
         \begin{itemize}
             \item Utilisation d'un OS ou paquets vulnérables
             \columnbreak
             \item Erreur de configuration du conteneur
             \item Erreur de configuration des services
         \end{itemize}
-        \item Release :
+        \item Livraison :
         \begin{itemize}
             \item Mauvaise gestion des versions de conteneurs
             \item Erreur de configuration du script de build
         \end{itemize}
-        \item Configure :
+        \item Configuration :
         \begin{itemize}
             \item Mauvaise gestion des secrets
             \item Erreur de configuration des déploiements
         \end{itemize}
-        \item Monitor :
+        \item Surveillance :
         \begin{itemize}
-            \item Absence ou trop faible collecte de log (application et conteneur)
+            \item Absence ou trop faible collecte de traces (application et conteneur)
         \end{itemize}
     \end{enumerate}
 \end{multicols}
 
-On constate donc qu'une majorité des risques protés par le \emph{Pipeline} DevOps sont lié à des erreurs commises lors
+On constate donc qu'une majorité des risques portés par le \emph{Pipeline} DevOps sont liés à des erreurs commises lors
 du développement. Il s'agira donc d'un point d'attention dans la recherche de solutions.
 
 \subsection{Les risques d'un cluster Kubernetes}
 De par sa nature, l'orchestrateur \ac{K8S} et les nœuds qui constituent le cluster agissent comme une couche 
 d'abstraction entre l'infrastructure du Cloud Provider et les conteneurs (aussi appelés \emph{Pods}) qu'il héberge.
 \newline Il est cependant important de noter que quelques problématique de sécurité (\eg Réseau, accès API, chiffrement 
-du traffic \emph{etcd}, \dots) sont tout de même à addresser. C'est en tout cas ce que recommande la documentation 
+du traffic \emph{etcd}, \dots) sont tout de même à adresser. C'est en tout cas ce que recommande la documentation 
 officiel de \ac{K8S}\autocite{k8s_security_2021}.
 
-Nous nous retrouvons donc avec les risques propres au cluster \ac{K8S} qui, dans un certain sens, partage des similitudes
-avec les risques protés par des infrastructure virtualisés classique : Gestion du \ac{RBAC} et de l'authentification, 
+Nous nous retrouvons donc avec les risques propres au cluster \ac{K8S} qui, dans un certain sens, partagent des similitudes
+avec les risques portés par des infrastructure virtualisés classique : Gestion du \ac{RBAC} et de l'authentification, 
 gestion des secrets, qualité de service, etc..
 
 Cependant, le fonctionnement d'un conteneur est différent d'une machine virtuelle : le kernel est partagé entre l'hôte et
-le conteneur. De nouveaux risques apparaissent d'isolation d'environnements d'execution et d'accès à des ressources 
-sensible apparaissent donc. 
+le conteneur. De nouveaux risques apparaissent d'isolation d'environnements d'exécution et d'accès à des ressources 
+sensibles apparaissent. 
 
 \newpage
 
@@ -102,10 +102,9 @@ nous pouvons maintenant nous intéresser aux solutions permettant leurs réducti
 
 Pour cela nous allons utiliser comme support la méthodologie décrite dans le \citetitle{samm_v2.0_owasp_project_2021}
 \autocite{samm_v2.0_owasp_project_2021}
-de l'\citeauthor{samm_v2.0_owasp_project_2021}. Cette méthodologie, mit à jours en 
-\citedate{samm_v2.0_owasp_project_2021}, fait office de référence pour l'analyse et l'amélioration de la sécurité des 
-logiciels développés en entreprise.
-\newline Elle est particulièrement recommandé dans le cadre de développement Agiles et / ou \linebreak DevOps.
+de l'\citeauthor{samm_v2.0_owasp_project_2021}. Cette méthodologie, mise à jours, fait office de référence pour l'analyse
+et l'amélioration de la sécurité des logiciels développés en entreprise.
+\newline Elle est particulièrement recommandée dans le cadre de développement Agiles et / ou \linebreak DevOps.
 
 \subsection{Le modèle de référence}
 
@@ -114,8 +113,8 @@ développement logiciel sur le plan de la sécurité informatique.
 
 Cette quantification est réalisée sur la base de différentes pratiques de sécurité chacune regroupés dans des fonctions 
 métier et notés sur une échelle de trois points avec en point initial zéro implicite. 
-\newline Ces pratiques de sécurité dispose elles même de deux activités permettant de qualifier le niveau de maturité 
-d'une entreprises sur les principaux thèmes associée à la pratique.
+\newline Ces pratiques de sécurité disposent elles-mêmes de deux activités permettant de qualifier le niveau de maturité 
+d'une entreprise sur les principaux thèmes associés à la pratique.
 
 Le \ac{SAMM} peut donc être représenté de la manière suivante :
 
@@ -128,7 +127,7 @@ Le \ac{SAMM} peut donc être représenté de la manière suivante :
 
 \newpage
 
-L'échelle de quantification quant à elle est défine de la manière suivante : 
+L'échelle de quantification quant à elle est définie de la manière suivante : 
 \setlist[enumerate,1]{start=0}
 \begin{enumerate}
     \item Niveau initial, aucune mesure de sécurité n'est appliqué.
@@ -145,19 +144,19 @@ Le dernier niveau constitue quant à lui l'objectif à atteindre.
 La fonction \emph{Gouvernance}, telle que présentée dans le modèle \ac{SAMM}, représente le point de départ de la 
 mise en œuvre de la sécurité informatique dans le cadre de développement. C'est en effet sur la base des 
 trois pratiques de sécurité associés (\emph{Stratégie \& Métriques}, \emph{Politiquer \& Conformité}, 
-\emph{Formation \& Conseils}) que seront issue l'ensemble des actions techniques et organisationnels des autres
+\emph{Formation \& Conseils}) que seront issues l'ensemble des actions techniques et organisationnelles des autres
 fonctions métier.
 
 La \emph{Gouvernance} de la sécurité des développements est un sujet déjà encré dans la philosophie du Groupe JCDecaux.
 Il dispose déjà d'un niveau de maturité avancé grâce à la mise en place de politiques de sécurité dédiées au 
-applications et leur développement; à la formation et intégration d'interlocuteurs sensibilisé aux risques de sécurité;
+applications et leur développement; à la formation et intégration d'interlocuteurs sensibilisés aux risques de sécurité;
 de même que la mise en place de \ac{KPI} permettant la mesure et l'amélioration de l'efficacité de la stratégie.
 \newline Cette stratégie, adoptant les principes de la sécurité par la conception (Security By Design) a par ailleurs 
 fait  l'objet d'une présentation\autocite{devopsrex_denis_2019} lors du \href{https://2019.devopsrex.fr/}{DevOpsREX 219} 
-par Joy-Alexandra Denis, ex-RSSI du Groupe JCDecaux et maintenant RSSI de la filiale France du Groupe Ikea.
+par Joy-Alexandra Denis, ex-RSSI Adjointe du Groupe JCDecaux et maintenant RSSI Ikea France.
 
 Cependant, et contrairement aux préconisations du \ac{NIST}\autocite*{app_cont_sec_nist_2017}, le Groupe ne dispose pas
-d'une politique de sécurité dédié aux technologies de conteneurisation d'application et d'hébergement connexe. 
+d'une politique de sécurité dédiée aux technologies de conteneurisation d'application et d'hébergement connexe. 
 
 De même, bien que l'on observe une forte sensibilisation aux problématiques de sécurité des responsables produit / 
 projet, on constate que les populations de développeurs ne disposent pas d'un accompagnement spécifique et
@@ -177,44 +176,44 @@ la conception pourrait entraîner la compromission globale de l'application.
 \newline Afin de prévenir ces risques, le modèle \ac{SAMM} identifie trois axes de sécurisation : l'évaluation des risques, 
 la définition de prérequis de sécurité et la sécurisation de l'architecture.
 
-Depuis 2019, toutes les applications produites au sein du Groupe JCDecaux font l'objet d'une analyse de risque 
+Depuis 2019, toutes les applications produites au sein du Groupe JCDecaux font l'objet d'une analyse de risques 
 (voir annexe \ref{appendix:securitybydesign}) par les équipes de développement dès l'étude de faisabilité. 
-Cette analyse de risque et les prérequis de sécurité associé seront ensuite soumis à validation par l'équipe \ac{SSI} 
+Cette analyse de risques et les prérequis de sécurité associés seront ensuite soumis à une validation de l'équipe \ac{SSI} 
 qui émettra des recommandations si cela est nécessaire.
 
-Si certain prérequis de sécurité sont directement dépendent directement de l'application développée, il est important 
+Si certain prérequis de sécurité  dépendent directement de l'application développée, il est important 
 de noter que la \ac{SAMM} et le \ac{SAFECODE}\autocite[p. 15]{fundamental_pract_sec_soft_safecode_2018} recommandent la 
 mise à disposition des équipes de prérequis génériques pour les développement.
-\newline Dans le cas du Groupe JCDecaux, ces recommandations sont présenté sous la forme de onze \emph{Golden Rules}
-rédigés en anglais et disponible pour toutes les équipes de développement du Groupe.
+\newline Dans le cas du Groupe JCDecaux, ces recommandations sont présentées sous la forme de onze \emph{Golden Rules}
+rédigés en anglais et disponibles pour toutes les équipes de développement du Groupe.
 
-Enfin, il conseillé de définir un set d'architectures applicative standard pour les développement. Cela peut prendre la 
+Enfin, il est conseillé de définir un set d'architectures applicative standards pour les développements. Cela peut prendre la 
 forme d'une architecture Type ou d'une configuration modèle d'un framework .
 
 \subsection{Implémentation}
 L'implémentation, étape la plus chronophage dans un projet de développement, représente la principale activité des 
-développeurs. C'est durant cette étape que ces derniers produisent le code source et ressources qui constituerons 
+développeurs. C'est durant cette étape que ces derniers produisent le code source et ressources qui constitueront
 l'application une fois compilée.
 
 Afin de disposer d'une base commune de développement et de process, ces même développeurs mettent en œuvre divers outils
 à unifier les environnements et d'automatiser le plus d'actions. On retrouve donc des outils de versionnage de code, 
-d'execution de tests automatiques ou bien encore de compilation et livraison automatique d'images\footnote{Ces outils de \ac{VCS}, 
+d'exécution de tests automatiques ou bien encore de compilation et livraison automatique d'images\footnote{Ces outils de \ac{VCS}, 
 \ac{CI}, \ac{CD} constituent dans les faits la base technique du Pipeline DevOps.}.
 
-Ces outils étant performant et versatiles, la méthodologie \ac{SAMM} nous propose de les exploiter et ou complémenter 
+Ces outils étant performants et versatiles, la méthodologie \ac{SAMM} nous propose de les exploiter et ou complémenter 
 afin de réaliser des opération d'évaluation de sécurité.
 \newline Ainsi en intégrant des analyseurs de dépendances et en rajoutant des règles dans les profils d'évaluation de 
-qualité de code, il est possible de drastiquement réduire le nombre de vulnérabilité d'un programme.
-Dans le cas où l'intégration de ses règles seraient trop coûteuses ou impossible, l'exploitation d'outils dédiés est 
+qualité de code, il est possible de drastiquement réduire le nombre de vulnérabilités d'un programme.
+Dans le cas où l'intégration de ces règles serait trop coûteuse ou impossible, l'exploitation d'outils dédiés est 
 envisageable. Ces outils sont des \ac{SAST}. 
 
-Autre point important lors de l'implémentation, une gestion appropriée des configuration et des secrets est requise pour
+Autre point important lors de l'implémentation, une gestion appropriée des configurations et des secrets est requise pour
 toute conception d'application conteneurisée. En effet, il est primordiale de stocker ses configurations et secrets dans
-un référentiel unique et auditable. Il en va de même pour les images compilée.
+un référentiel unique et auditable. Il en va de même pour les images conditionnées.
 
 Cette centralisation des ressources par type permettra un meilleur suivi des défauts et par la suite la mise en place 
-de \ac{KPI}. Ces \ac{KPI} pourront servir à l'évaluation des performances de sécurité des application, mais aussi au 
-ciblage des équipes nécessitant d'être accompagnée sur ce sujet.
+de \ac{KPI}. Ces \ac{KPI} pourront servir à l'évaluation des performances de sécurité des applications, mais aussi au 
+ciblage des équipes nécessitant d'être accompagnées sur ce sujet.
 \newline L'objectif final étant de pouvoir faire évoluer continuellement la gestion de la sécurité des applications grâce
 à ces \ac{KPI}.
 
@@ -225,12 +224,12 @@ l'application pour découvrir d'éventuellement dysfonctionnements.
 
 Dans un premier temps, il sera nécessaire de analyser l'architecture de l'application et de son implémentation dans le 
 \ac{SI} à la recherche de vulnérabilités connues. Si aucun problème n'est détecté et que les mécanismes de sécurité de 
-l'application sont correct, nous pourrons passer à l'étape suivante.
-\newline Dans le cas contraire, les développeurs devront revoir leur copie.
+l'application sont corrects, nous pourrons passer à l'étape suivante.
+\newline Dans le cas contraire, les développeurs devront appliquer des correctifs.
 
 Dans un second temps, voir éventuellement en parallèle de l'étape précédente, il sera nécessaire de faire exécuter des 
 test d'intégration continue afin de valider le bon comportement de l'application vis à vis de vulnérabilité connue.
-Des test de charge et d'attaque sur la logique métier de l'application sont par ailleurs fortement recommandé.
+Des test de charge et d'attaque sur la logique métier de l'application sont par ailleurs fortement recommandées.
 \newline Des solutions de \ac{DAST}  et \ac{IAST} tel que les services \href{https://www.rapid7.com/products/insightappsec/}
 {Rapid7 InsightAppSec} et \href{https://www.acunetix.com/}{Acunetix d'Invicti} peuvent donc se montrer fort intéressantes.
 
@@ -241,7 +240,7 @@ plus adapté.
 
 Pour le Groupe JCDecaux, on constate une certaine déviation vis à vis des recommandations de la méthodologie \ac{SAMM}.
 Si la validation de l'architecture et les audits de sécurité sont bien réalisés, la portion \ac{DAST} / {IAST} n'est 
-quand à elle pas présente.
+quant à elle pas présente.
 
 \subsection{Opérations}
 Si jusqu'ici les différentes solutions proposées par la méthodologie \ac{SAMM} et le groupe \ac{SAFECODE} portaient sur
@@ -253,9 +252,9 @@ Ainsi, il est nécessaire de pouvoir durcir les configurations d'exécutions des
 configuration automatique, soit en  appliquant des point de contrôle bloquant lors du déploiement d'un conteneur sur un 
 cluster.
 
-Deuxième aspect d'importance, la connaissance des pods en cours d'exécutions sur un cluster ainsi que la connaissance de
+Deuxième aspect d'importance, la connaissance des pods en cours d'exécution sur un cluster ainsi que la connaissance de
 leur état de vulnérabilité est primordial à la sécurisation du cluster. Ainsi, comme pour les infrastructures "classiques",
-l'exploitation de scanner de vulnérabilité est une nécessitée pour disposer d'informations suffisantes et fiables pour
+l'exploitation de scanner de vulnérabilité est une nécessité pour disposer d'informations suffisantes et fiables pour
 avoir une gestion appropriée des patchs de sécurité.
 
 De même que le besoin se fait sentir pour les infrastructures virtualisées, la gestion des incidents sur les clusters doit 
@@ -263,88 +262,87 @@ De même que le besoin se fait sentir pour les infrastructures virtualisées, la
 par les équipes en lien avec la plateforme.
 
 La première source d'information pour la gestion d'incidents sera les logs applicatifs et issues du cluster, 
-bien que ceux-ci peuvent être complémentés par des informations liées au runtime du conteneur. C'est par exemple ce que 
-propose la solution \href{https://sysdig.com/opensource/falco/}{Falco de sysdig}.
+bien que ceux-ci peuvent être complémentés par des informations liées au fonctionnement du conteneur. C'est par exemple 
+ce que propose la solution \href{https://sysdig.com/opensource/falco/}{Falco (Sysdig)}.
 \newline La création d'un inventaire exhaustif des pods en cours d'execution et de leur état de vulnérabilité
 constituera quant à lui la deuxième source d'information pour la gestion opérationnelle de la sécurité des clusters 
 \ac{K8S}.
 
 Enfin, un travail proactif de gestion des systèmes dit \emph{legacy} et / ou en fin de vie devra être réalisé; pour les
-mêmes raisons qu'il est réalisé sur l'est infrastructure physique et virtualisés.
- 
+mêmes raisons qu'il est réalisé sur l'infrastructure physique et virtualisés.
 
 \newpage
 
 \section{Analyse et critique des solutions}
 
-Pour cette étude, nous nous sommes appuyé sur l'exploitation de deux principaux documents de référence : le rapport 
+Pour cette étude, nous nous sommes appuyés sur l'exploitation de deux principaux documents de référence : le rapport 
 \citetitle{fundamental_pract_sec_soft_safecode_2018} (SAFECode) et la documentation officielle de la méthodologie 
 \citetitle{samm_v2.0_owasp_project_2021} (OWASP Project). 
 
-Nous pouvons donc nous questionner sur la correspondence des solutions apportés par ces documents et les 
-problématiques posés par notre mission.
+Nous pouvons donc nous questionner sur la correspondance des solutions apportées par ces documents et les 
+problématiques posées par notre mission.
 
 \subsection{Les sources de l'étude}
-Comme présenté ci-dessus, deux principales sources ont été utilisés lors de cette étude, les sources secondaires servant
+Comme présenté ci-dessus, deux principales sources ont été utilisées lors de cette étude, les sources secondaires servant
 à appuyer un point ou donner des éléments de réponse complémentaires.
 
 Ce faible nombre s'explique par le fait que ces deux ressources font office de référence pour une majorité des études et 
 guides d'implémentation de sécurité dans un processus de développement applicatif. On retrouve en effet référence à ces
 documents dans les publications \citetitle{ssdf_nist_2012} (\ac{NIST}) et \citetitle{sage_carnegie_mellon_university_2021}
-(Carnegie Mellon University Software Engineering Institute) qui m'ont servie de support d'implémentation dans mes missions.
+(Carnegie Mellon University Software Engineering Institute) qui m'ont servi de support d'implémentation dans mes missions.
 
 C'est donc  pourquoi j'ai fait le choix de concentrer la recherche des solutions aux problématiques de ma mission autours
 de ces deux seuls documents.
 
 \subsection{Les solutions présentées}
 Les solutions présentées dans cette étude de l'état de l'art de la sécurisation d'un processus de développement et 
-déploiement applicatif sont agnostiques des technologie et techniques exploité. Elles sont en effet formulées de façon à
-pouvoir être mise en œuvre tant dans un contexte de développement classique que DevOps.
-\newline De ce fait, il sera nécessaire d'intégrer et d'adapter ces solutions aux \emph{Pipelines} présent au sein 
+déploiement applicatif sont agnostiques des technologies et techniques exploitées. Elles sont en effet formulées de façon à
+pouvoir être mises en œuvre tant dans un contexte de développement classique que DevOps.
+\newline De ce fait, il sera nécessaire d'intégrer et d'adapter ces solutions aux \emph{Pipelines} présents au sein 
 du Groupe JCDecaux et de ses filiales.
 
 De plus, cette étude nous présente un nombre conséquent de solutions, portant tant sur des sujets organisationnels que
 techniques. Une sélection des solutions devra donc être réalisée afin que celles-ci correspondent au mieux aux problématiques
-de ma mission et puissent être réalisé dans cette dernière.
+de la mission et que leur intégration puisse être réalisé dans le temps imparti à cette dernière.
 
-Une attention particulière devra être porté sur les projets en cours de réalisation au sein de la \ac{DSI} Groupe afin de mieux 
-coordonner les actions; notamment vis-à-vis des sujets liés à l'analyse de risque. 
+Une attention particulière devra être portée sur les projets en cours de réalisation au sein de la \ac{DSI} Groupe afin de mieux 
+coordonner les actions; notamment vis-à-vis des sujets liés à l'analyse de risques. 
 
 \newpage
 
 
 \subsection{Impact du COVID-19}
 Comme pour beaucoup d'entreprises du secteur de la publicité, la crise du COVID-19 a eu un impact considérable sur le
-marché. Cet impact s'exprime par une chute massive des commandes de diffusion de campagnes publicitaire et donc du 
-chiffre d'affaires.
-\newline Pour le Groupe JCDecaux, cette perte est estimée à -40,6\% du chiffre d'affaires pour l'année fiscale 2020; soit
+marché. Cet impact s'exprime par une chute massive des commandes de diffusion de campagnes publicitaires et donc du 
+chiffre d'affaire.
+\newline Pour le Groupe JCDecaux, cette perte est estimée à -40,6\% du chiffre d'affaire pour l'année fiscale 2020; soit
 une perte 2 311,8 millions d'euro\autocite{jcdecaux_resultfin_2020}.
 
 Afin de réduire les effets de cette perte d'activité, des mesures de restriction des coûts et de sauvegarde d'emplois 
-ont été mises en œuvres au sein du Groupe et de ses filiales. L'ensemble des équipes du Groupe et une majorité des équipes
+ont été mises en œuvre au sein du Groupe et de ses filiales. L'ensemble des équipes du Groupe et une majorité des équipes
 de la filiale France se sont donc retrouvés en activité partielle (70\% temps travaillé et 30\% de chômage partielle) 
 dès le mois de Mars 2020. Ces mesures sont encore effectives à lors de la rédaction de ce mémoire.
 
 \section{Conclusion et solutions retenues}
-Grâce à cette étude d'état de l'art portant sur la sécurité des développement et déploiement applicatif, nous pouvons 
+Grâce à cette étude d'état de l'art portant sur la sécurité des développements et déploiements applicatif, nous pouvons 
 constater que nombreuses sont les solutions aux problématiques posées par le sujet. 
 
 En effet, ce sujet est à l'étude par des organismes de recherche, des administrations et organisations à but 
-non lucratifs depuis près de quinze ans. Nous disposons donc d'un certain recul sur le sujet et ce même si les 
+non lucratif depuis près de quinze ans. Nous disposons donc d'un certain recul sur le sujet et ce même si les 
 problématiques de conteneurisation sont relativement nouvelles ( +/- 5 ans).
 C'est par ailleurs pourquoi certaines de ces problématiques sont déjà adressées pour le Groupe.
 
 Cependant, compte tenu du contexte dans lequel est réalisé ce mémoire, certaines solutions qui devraient être mises en 
-œuvre nous pourront pas être intégralement implémenté à cause de leur coût ou par manque de ressources (humaines / 
+œuvre nous pourront pas être intégralement implémentée à cause de leur coût ou par manque de ressources (humaines / 
 temps).
 
 C'est pourquoi nous allons nous concentrer sur la résolution des solutions suivantes : 
 \begin{itemize}
     \item Création d'un processus de qualification sécurité des applications
-    \item Création de politiques de sécurité dédiées aux conteneurs et à leur déploiement
+    \item Création de politiques de sécurité dédiées aux conteneurs et à leur déploiements
     \item Mise à disposition d'outils d'évaluation de la sécurité de conteneurs
     \item Création d'un processus opérationnel de gestion de la sécurité des clusters
-    \item Mise à disposition d'outils d'inventaire et de suivi de vulnérabilité pour les clusters
+    \item Mise à disposition d'outils d'inventaire et de suivi de vulnérabilités pour les clusters
     \item Évaluation de la sécurité de la plateforme de gestion des configurations
     \item Durcissement des conteneurs et de leurs déploiements
 \end{itemize}
