@@ -4,6 +4,7 @@ Cette mission de fin d'étude clôture trois années d'apprentissage réalisées
 du Groupe JCDecaux. Le travail réalisé durant les six mois de celles-ci s'inscrivent donc eux aussi dans la continuité 
 d'un chantier pluriannuel de modernisation de la chaîne de production des applications du Groupe.  
 
+
 \section{Le Groupe JCDecaux}
 JCDecaux est un groupe industriel international fondé en France en 1964 par Jean-Claude Decaux et spécialisé dans 
 l'affichage publicitaire urbain. Principalement connue pour son mobilier urbain (Abribus, MUPI\footnote{Mobilier Urbain 
@@ -18,6 +19,8 @@ aussi de par la qualité des services qu'il propose aux collectivités locales e
 valeurs de l'entreprise. Ces valeurs sont une réelle fierté pour ses 12 300 collaborateurs et source d'innovation dans leurs
 projets. 
 
+
+
 \section{L'équipe Sécurité des Systèmes d'Information}
 \begin{wrapfigure}{R}{0.27\textwidth} 
     \centering \includegraphics[width=0.25\textwidth]{resources/img/jcd_pla_front.jpg}
@@ -29,15 +32,23 @@ exploitées par le Groupe; tant pour la diffusion publicitaire programmatique qu
 collectivités (affichage, vélo en libre-service).
 
 L'équipe \ac{SSI} Groupe de JCDecaux est localisée au siège de Sainte-Apolline, Plaisir.
-\newpage
 Elle est actuellement composée de trois personnels internes (le \ac{RSSI}, un ingénieur sécurité, un apprenti) et est 
 renforcée par trois personnels externes en prestation.
 
 Ces missions s'articulent autour de trois thèmes : la sécurité organisationnelle (Analyse de risques, 
 politiques de sécurité, sensibilisation, \dots), la sécurité opérationnelle (\ac{SOC}, conformité, veille phishing, \dots) et 
 la qualification technique des systèmes et infrastructures.
-\newline Spécificité de l'équipe \ac{SSI}, ses services sont offerts par le Groupe aux filiales afin de promouvoir la 
-sécurité informatique dans ces structures.
+
+Si l'équipe existe depuis plus de dix ans, ses objectifs de sécurisations des \ac{SI} et des services proposés par le 
+Groupe JCDecaux ne sont pas encore remplis. Ces objectifs nécessitent en effet un travail permanent de contrôle des 
+systèmes, d'accompagnement des développements et de formation des collaborateurs pour atteindre un niveau convenable.
+
+Cela est par ailleurs particulièrement vrai pour les entreprises industrielles pour lesquelles la culture de 
+sécurité informatique n'est souvent que peu présente. 
+\newline C'est pourquoi les missions réalisées par l'équipe de \ac{SSI} aux profits des filiales ne leur sont pas 
+facturés par le Groupe JCDecaux; afin de promouvoir cette culture et favoriser les échanges de compétences dans ce domaine.  
+
+
 
 \section{Publicité et développement applicatif}
 Contraint par la complexité de son secteur d'activité, le Groupe JCDecaux s'est pourvue en capacité de développement
@@ -52,106 +63,124 @@ Effet de bords bénéfique à ce changement de doctrine, on constate une augment
 (séparation en micro-services et dissociation Frontend applicatif du Backend). Cette fragmentation permet en effet une
 simplification des opérations de maintenances et favorise l'amélioration incrémentale des applications produites.
 
+Or, on constate cependant depuis cette migration l'explosion du nombre de serveurs (virtuels ou physique) et une réelle
+augmentation de complexité dans l'administration de ces derniers. Une rationalisation des ressources et automatisation
+des actions devient donc nécessaire.
+
+
+
 \section{Automatisation et conteneurisation du SI}
-Conséquence de la modularisation de ses systèmes, le nombre de serveurs et machines virtuelles exploitées par les 
-\ac{DSI} a drastiquement augmenté ces cinq dernières années.
+Pour tenter de palier à ces problématiques d'administration , les équipes de la \ac{DSI} Groupe se sont donc équipées 
+de divers outils d'automatisation et méthodes de gestion pour optimiser leurs actions les plus récurrentes.
 
-Pour tenter de palier aux problématiques d'administration induites par cette augmentation, les équipes de la \ac{DSI} 
-Groupe se sont pourvues en outils d'automatisation et méthodes de gestion pour optimiser leurs actions les plus récurrentes.
-Grâce à l'amélioration de la \ac{CMP}, sa liaison avec la \ac{CMDB} et l'intégration d'Ansible \footnote{Ansible est un 
+L'amélioration de la \ac{CMP}, sa liaison avec la \ac{CMDB} et l'intégration d'Ansible \footnote{Ansible est un 
 moteur d'automatisation du SI. Il permet l'automatisation de la configuration de système et du déploiement applicatif
-grâce à des playbook et est initialement développé par RedHat sous licence GNU GPL v3.0}, les équipes opérationnelles 
-de la DSI ont réussi à réduire la complexité de la gestion du \ac{SI} du Groupe.
+grâce à des playbook et est initialement développé par RedHat sous licence GNU GPL v3.0} dans les systèmes permettent aux
+équipes opérationnelle de réduire partiellement cette complexité.
 
-Cependant, en 2019, un programme de qualification de la technologie d'orchestration de conteneur \ac{K8S} est monté 
-conjointement entre la \ac{DSI} Groupe et la \ac{DSI} France. L'objectif, à terme, est de fournir aux équipes de 
-développement la capacité de produire une application conteneurisée et directement déployable sur l'infrastructure.
+Cependant, certaines opérations n'étant pas automatisables, trop complexes ou encore chronophage, nous constatons
+occasionnellement des requalifications arbitraires des environnements d'applications métier. Cette culture du 
+\emph{POC-PROD}\footnote{Néologisme décrivant le fait de requalifier l'environnement de développement ou d'intégration 
+d'un système en tant que production sans migration appropriée ni qualification. \newline POC : Proof of Concept, PROD :
+Production}, bien qu'en nette régression, existe encore dans une certaine mesure au sein du Groupe JCDecaux
+et pose malheureusement encore des problèmes de sécurité.
 
-Le programme vise à évaluer une architecture de cluster \ac{K8S} hébergée sur l'infrastructure de notre Cloud 
-Provider \ac{AWS} et à l'intégration des outils de déploiement nécessaires. Il est actuellement sur le point de se 
-terminer et la préparation d'une ouverture globale aux équipes des deux \ac{DSI} est en cours.
+En 2019, un programme de qualification de la technologie d'orchestration de conteneur \ac{K8S} est monté 
+conjointement entre la \ac{DSI} Groupe et la \ac{DSI} de la filiale France. Il vise, à terme, à fournir aux équipes de 
+développement et aux équipes opérationnelles une plateforme de déploiement standardisé d'applications conteneurisées.
+\newline Sa mission consiste à évaluer une architecture de cluster \ac{K8S} hébergée sur l'infrastructure de notre Cloud 
+Provider \ac{AWS} et à l'intégration des outils de déploiement nécessaires.
+\newline Il représente en soi une étape majeure dans l'intégration de la méthodologie DevOps au sein du Groupe JCDecaux
+et pourrait grandement réduire le risque d'occurrence de \emph{POC-PROD}.
 
-Une fois l'ouverture effective et l'analyse de l'efficacité de la plateforme réalisée pour les premiers mois, cette 
-dernière sera rendue accessible aux filiales en faisant la demande.
+Cette évaluation maintenant terminée et ses résultats concluants, les responsables du programme souhaitent pouvoir requalifier
+la plateforme créer en tant que plateforme de production. Ce souhait est particulièrement motivé par la filiale France
+dont les équipes de développements en ont exprimées le besoin.
+\newline Cette plateforme devrait à termes être rendu accessible aux autres filiales du Groupe n'ayant pas participé à 
+l'expérimentation initiale. Le tout accompagné d'objectifs de rationalisation des ressources et de réduction des coûts.
+
+\newpage
 
 \section{Problématiques de sécurité}
 Comme pour tous les projets d'infrastructure informatique du Groupe, la plateforme \ac{K8S} doit respecter un ensemble de
 règles et principes d'implémentation définies par les politiques du Groupe JCDecaux. La conformité de la plateforme aux
-\emph{IT Security Policies} (\ie Politiques de sécurité informatique en français) est quant à elle un prérequis pour tout
-déploiement en production. 
-\newline En effet, toute non-conformité vis-à-vis d'une \emph{IT Security Policies} (\eg Réseau, Identité, Donnée, etc..)
-pourrait entraîner l'arrêt de la mise en production de la plateforme jusqu'à ce qu'elle soit rendue conforme.
+\emph{IT Security Policies} (\ie Politiques de sécurité informatique en français) est quant à elle un prérequis à tout
+requalification en plateforme de production.
 
-Afin d'évaluer le niveau de conformité et de sécurité de la plateforme \ac{K8S}, l'équipe \ac{SSI} a fait réaliser un 
-audit technique par un prestataire externe, ici XMCO, en juillet 2020.
+Si nous savons qu'un certain nombre de mesures ont été mise en place afin d'assurer l'intégrité et le bon fonctionnement
+opérationnelle de la plateforme et que plusieurs éléments de sécurité sont intégrés dans celle-ci, nous ne connaissons pas
+le réel niveau de sécurité de la plateforme \ac{K8S}.
+
+Ainsi, afin d'évaluer son niveau de conformité et de sécurité, l'équipe \ac{SSI} a fait réaliser un audit technique par 
+un prestataire externe, ici XMCO, en juillet 2020.
 \newline Il a permis de mettre en évidence les quelques faiblesses de la plateforme et d'obtenir des conseils 
 sur les correctifs à appliquer sur la plateforme.
 
-Plusieurs chantiers ont ainsi émergé :
-\begin{enumerate}
-    \item Cloisonnement de l'infrastructure
-    \begin{itemize}
-        \item Ségmentation des clusters en fonction des \ac{BU}
-        \item Durcissement des règles réseau
-    \end{itemize}
-    \item Contrôle des déploiements
+Plusieurs chantiers de remédiation ont ainsi émergé :
+\begin{multicols}{2}
+    \begin{enumerate}
+        \item Cloisonnement de l'infrastructure
         \begin{itemize}
-        \item Intégration de protection contre objets dangereux
-        \item Durcissement des images
-        \item Contrôle de l'origine des images
-    \end{itemize}
-    \item Contrôle d'accès et secrets
-    \begin{itemize}
-        \item Renforcement du composent kube2iam
-        \item Sécurisation du bastion SSH et des serveurs de rebond
-        \item Gestion et rotation des secrets
-    \end{itemize}
-    \item Validation des objets et Sensibilisation sécurité
-    \begin{itemize}
-        \item Mise en place de guides pour les développements / déploiements
-        \item Sensibilisation des équipes
-        \item Standardisation des déploiements
-        \item Validation des images et des applications
-    \end{itemize}
-\end{enumerate}
+            \item Ségmentation des clusters en fonction des \ac{BU}
+            \item Durcissement des règles réseau
+        \end{itemize}
+        \item Contrôle d'accès et secrets
+        \begin{itemize}
+            \item Renforcement du composent kube2iam
+            \item Sécurisation du bastion SSH et des serveurs de rebond
+            \item Gestion et rotation des secrets
+        \end{itemize}
+        \columnbreak
+        \item Contrôle des déploiements
+            \begin{itemize}
+            \item Intégration de protection contre objets dangereux
+            \item Durcissement des images
+            \item Contrôle de l'origine des images
+        \end{itemize}
+        \item Validation des objets et Sensibilisation sécurité
+        \begin{itemize}
+            \item Mise en place de guides pour les développements / déploiements
+            \item Sensibilisation des équipes
+            \item Standardisation des déploiements
+            \item Validation des images et des applications
+        \end{itemize}
+    \end{enumerate}
+\end{multicols}
 
-\pagebreak
+La réalisation de ces quatre chantiers est donc nécessaire afin de pouvoir considérer la plateforme \ac{K8S} comme étant
+conforme aux prérequis de sécurité du Groupe et donc pouvoir commencer à l'exploiter en tant que plateforme de production.
 
-\section{La mission et ses objectifs}
+Les deux premiers chantiers ont débutés quelques semaines après la restitution de l'audit et ont été encadrés par le \ac{RSSI}.
+Ils ne figureront donc pas dans les objectifs de la mission de fin d'étude qui m'a été confié.
 
-Quatre chantiers sont donc à réaliser pour sécuriser la plateforme \ac{K8S} et la rendre conforme aux politiques de 
-sécurité.
+\newpage
 
-Deux chantiers ont directement débuté à la suite de l'audit : le cloisonnement de la plateforme ainsi que l'amélioration
-du contrôle d'accès. Ces deux chantiers sont réalisés par l'équipe "Études \& Architecture" de la \ac{DSI} Groupe avec
-la supervision du \ac{RSSI}.
-\newline Il reste donc à traiter le chantier "Contrôle des déploiements" ainsi que le chantier "Validation des objets et 
-Sensibilisation sécurité". Ma mission s'inscrit donc dans la réalisation de ces deux chantiers.
+\section{Ma mission de fin d'études}
+Les deux chantiers restants, et non les moindres, portent donc sur la sécurisation et validation des images déployées sur
+la plateforme \ac{K8S}, le contrôle de leur déploiement ainsi que la sensibilisation des équipes DevOps.
 
-Les objectifs de cette mission sont décrits de la façon suivante:
-\begin{enumerate}
-    \item Objectifs organisationnels : 
-    \begin{itemize}
-        \item Revue des procédures de qualification sécurité des applications, conteneurs et de déploiements
-        \item Revue des procédures de gestion opérationnel de la sécurité des clusters Kubernetes
-        \item Production de ressources visant à la standardisation des déploiements sur les clusters
-        \item Production de guides et ressources visant à la sécurisation des développements pour Kubernetes
-    \end{itemize}
-    \item Objectifs techniques:
-    \begin{itemize}
-        \item Analyse des moyens techniques existants au sein du groupe et évaluation de leur efficacité.
-        \item Consolidation et optimisation des moyens techniques existants.
-        \item Qualification de nouvelles solutions techniques visant l’amélioration de la sécurité de l’infrastructure Kubernetes du  groupe, 
-        tant sur les phases développements que sur les phases de déploiement.
-        \item Intégration des solutions retenues à l’infrastructure. 
-    \end{itemize}
-\end{enumerate}
+La réalisation de ces deux chantiers constituera donc l'objectif principal de cette mission de fin d'étude.
+Elle pourrait donc être problématisée de la manière suivante : 
+\begin{center}
+    \color{bluejcd}  \enquote{Comment sécuriser une application conteneurisée, de sa conception à son déploiement sur un
+     cluster Kubernetes?}
+\end{center}
 
-Ma mission se présentera donc en deux phases distinctes, mêlant chacune des objectifs organisationnels et techniques:
-\begin{itemize}
-    \item \textmd{Première phase :} Revue et standardisation de la gestion de la sécurité des développements (applicatif et 
-    conteneur).
-    \item Seconde phase : Mise à disposition d'éléments techniques et / ou opérationnels visant à maintenir un bon 
-    niveau de sécurité dans l'exploitation de la plateforme Kubernetes. 
-\end{itemize}
+Nous tacherons donc tout au long de ce mémoire de trouver, évaluer et mettre en place un ensemble de solutions visant
+à répondre la problématique formulée ci-dessus.
+
+Nous aborderons dans un premier un ensemble de notions liées au développement applicatif, à la méthodologie DevOps 
+et DevSecOps, à la conception de conteneurs et à leur hébergement sur une infrastructure dédiée.
+
+Puis, nous nous concentrerons sur la mise en évidences des risques de sécurité associés au développement 
+d'applications conteneurisées. Nous rechercherons par la suite des solutions à ces risques en nous aidant d'une 
+méthodologie de référence.
+
+Nous poursuivrons sur l'intégration de ces solutions et évaluerons leur impacte sur les équipes exploitant la plateforme
+Kubernetes. Nous porterons une attention particulière sur l'évolution, positive ou non, de l'efficacité du processus de 
+développement DevOps du Groupe.
+
+Enfin nous conclurons l'adéquation des solutions retenues et de leur intégration dans le contexte DevOps du Groupe JCDecaux.
+
+
 
