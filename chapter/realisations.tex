@@ -303,3 +303,83 @@ Il nous faut donc mettre en œuvre cette revue de vulnérabilité au sein des é
 
 \subsection{Ajustement du processus de développement}
 
+Le processus  actuellement en place au sein des équipes de développement du groupe n'impose actuellement pas de contrôle
+des vulnérabilités des conteneurs durant la phase de développement. Cela implique donc que cette revue ne se fait qu'à 
+l'occasion d'un audit applicatif et que l'application des correctifs n'est faite qu'à la suite de cet audit. 
+\newline Il est donc nécessaire d'introduire cette revue de vulnérabilité durant la phase de développement afin de gagner
+en efficacité et réduire le niveau de vulnérabilité global des images.
+
+Nous avons donc proposé le processus de développement suivant aux équipes.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{resources/img/container_image_vuln_mgnt_dev.png}
+    \caption{Gestion des vulnérabilités d'image durant le développement}
+\end{figure}
+
+Ce nouveau processus intègre donc le scan des images de conteneur par les développeur, mais aussi de nouveaux éléments tels
+que la classification des vulnérabilités et la mise à disposition d'une liste de vulnérabilité donc le risque est accepté
+par l'équipe de \ac{SSI}.
+\newline L'objectif de ces deux nouvelles actions étant de réduire le bruit généré par le scanner de vulnérabilité durant
+le développement, tout en assurant un suivi et contrôle de l'équipe \ac{SSI} sur les vulnérabilités des conteneurs.
+
+\newpage
+
+\subsection{Unification des scanners}
+Jusqu'à récemment encore, il existait un certaine disparité entre les scanners de vulnérabilités déployés sur les 
+différents pipelines DevOps et ceux utilisés par les registres internes de conteneur. Ainsi, nous nous retrouvions avec 
+différentes configuration du scanner \emph{Trivy} sur les pipelines et différents configurations de \emph{Clair} sur les
+registres \emph{\ac{ECR}} et \emph{Harbor}. 
+\newline Il devenait donc nécessaire d'unifier outils et configuration pour réaliser au mieux les revues de vulnérabilité.
+
+Après une comparaison de l'efficacité de chaque scanner, nous avons fait le choix de migrer les différents scanner en 
+notre possession (hors \ac{ECR} donc) sur une configuration unique de Trivy. Si ce choix peut sembler discutable au vu 
+de la sensibilité de l'outil, il l'est beaucoup moins lorsque l'on prend en compte le fait que nous allons déployer une
+AllowList pour les vulnérabilités faisant office d'une acceptation de risques.
+
+\subsection{Attribution des vulnérabilités}
+Une problématique jusque là volontairement mise de coté se présente maintenant à nous: à quelle image appartient quelle 
+vulnérabilité?
+
+En effet, nous demandons aux développeurs d'exploiter des images dites \emph{de bases} afin de concevoir leur 
+images \emph{applicatives}. Or, ces images \emph{de bases} peuvent porter faire hériter leurs vulnérabilités aux images 
+\emph{applicatives} les exploitants.
+\newline Il devient donc nécessaire de pouvoir lister de manière dissocié les vulnérabilités propres à chaque image : 
+\emph{de bases} ou \emph{applicatives}
+
+Ce problème ne pouvant être réglé avec le outils déjà en place, il nous faut donc en développer un adapté à ce nouveau 
+besoin.
+
+\subsection{Développement d'un démonstrateur de classification de vulnérabilité}
+Comme évoqué ci-dessus, nous avons donc besoin de concevoir un outil permettant de présenter de manière dissocié les
+vulnérabilités d'une image \emph{applicative} des vulnérabilités héritées de son image \emph{de base}.
+Nous profitons de ce développement pour intégrer à cet outil la gestion et la génération des AllowList exploités dans les
+différents projets.
+
+Par contrainte de temps et de disponibilité de l'équipe de développement infrastructure, j'ai donc entrepris la réalisation 
+d'un démonstrateur remplissant l'ensemble de ces besoins. Ce démonstrateur ne présentant aucune mesure de sécurité ni de
+gestion suffisante des erreurs, il ne servira qu'à la vérification du principe de fonctionnement et validation du 
+processus de classification des vulnérabilités d'image.
+\newline L'outil fera l'office d'un "réel" développement courant le quatrième semestre de 2021; il intégrera plus de 
+fonctionnalités afin de pouvoir être aussi exploité par les équipes de développement tel que la génération d'une 
+AllowList spécifique à une image applicative (intégrant l'ensemble des vulnérabilités de l'image \emph{de base} utilisé 
+à l'AllowList). 
+
+\newpage
+
+Ce démonstrateur est encore en développement, la gestion des images applicative étant encore à intégrer, mais les 
+premiers retours de l'équipe de \ac{SSI} se veulent encourageants.
+\newline Il devrait être terminé et proposer pour qualification vers la mi-juillet.
+
+\vspace{1cm}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{resources/img/cont_mgnt_listing.png}
+    \caption{Liste des vulnérabilités des images en fonction de leur version}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{resources/img/cont_mgnt_add_cve.png}
+    \caption{Ajout d'une vulnérabilité à l'AllowList}
+\end{figure}
