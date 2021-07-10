@@ -1,6 +1,6 @@
 \chapter{Réalisations techniques}
 Comme énoncé dans la première partie de ce mémoire, nus allons concentrer notre travail sur la sécurisation des 
-développements applicatifs jusqu'à leur déploiement. Nous aborderons donc des sujets tel que la création de deux 
+développements applicatifs jusqu'à leur déploiement. Nous aborderons donc des sujets tels que la création de deux 
 procédures de sécurité, l'outillage des équipes ainsi que la réalisation de diverses évaluations de sécurité.
 
 \section{Une première approche du DevSecOps}
@@ -26,7 +26,7 @@ remontant trop de faux positif.
 
 Grace à ces actions, portés tant auprès du Groupe qu'auprès de ses filiales, l'équipe de \ac{SSI} s'est rapproché un peu
 plus de son objectif de sécurisation des applications développées en interne. Cette approche proactive et non plus 
-réactive de sécurisation a notamment permis de réduire drastiquement le nombre d'applications rejetées à la suite d'une 
+réactive de sécurisation a notamment permis de réduire considérablement le nombre d'applications rejetées à la suite d'une 
 qualifications sécurité pré-déploiement en production.
 
 Nous passions donc d'une méthodologie agile \emph{DevOps} à une méthodologie \emph{DevSecOps}.
@@ -34,11 +34,11 @@ Nous passions donc d'une méthodologie agile \emph{DevOps} à une méthodologie 
 \newpage
 
 \section{Les audits : quel processus pour quel résultat}
-Depuis 2019, nous (l'équipe de \ac{SSI}) avons observé une nette augmentation du nombre de qualification sécurité réalisées
+Depuis 2019, nous (l'équipe de \ac{SSI}) avons observé une nette augmentation du nombre de qualifications sécurité réalisées
 aux profits des projets de développement. Cette augmentation, bien que bénéfique à l'objet de l'équipe, a eu pour effet 
 de mettre en évidence divers problèmes ans l'organisation et la réalisation de ces audits.
-\newline Il nous arrivait encore à cette période de devoir intérrompre la publication de certaines applications n'étant 
-pas qualifiées, faute de procédures explicites et partagées à toutes les équipes de JCDecaux. Nous avons donc commencer à 
+\newline Il nous arrivait encore à cette période de devoir interrompre la publication de certaines applications n'étant 
+pas qualifiées, faute de procédures explicites et partagées à toutes les équipes de JCDecaux. Nous avons donc commencé à 
 travailler sur la question avec l'aide de quelques équipes de la \ac{DSI} France.
 
 La première réalisation dans cette quête de structure à été la définition claire et précise des points de contrôle et 
@@ -47,23 +47,23 @@ des vulnérabilités recherchées sur les applications. Ces points de contrôle 
 ensuite associé à plusieurs états (testé ou non, risque et application de correctifs) ainsi qu'un commentaire le cas 
 échéant.
 
-A cette liste de points de contrôle est ensuite adossé une revue du projet sur SonarQube (note \ac{SAST}) et de la 
-classification des entrés remontées par l'outil. Cette étape nous permets de prendre la mesure de la qualité du code de 
-l'application audité mais aussi du niveau d'attention apporté par l'équipe de développement à son application.
+À cette liste de points de contrôle est ensuite adossé une revue du projet sur SonarQube (note \ac{SAST}) et de la 
+classification des entrées remontées par l'outil. Cette étape nous permets de prendre la mesure de la qualité du code de 
+l'application auditée, mais aussi du niveau d'attention apporté par l'équipe de développement à son application.
 \newline Nous avons en effet constaté que les projets ayant le plus de vulnérabilité et erreur de code remonté par 
-SonarQube étaient géré par des équipe ayant peu d'intérêt dans le contrôle qualité de leur code.
+SonarQube était géré par des équipes ayant peu d'intérêt dans le contrôle qualité de leur code.
 \newline Ce même type de revue est réalisé le niveau de vulnérabilité des conteneurs pour les applications concernées, 
 mais nous reviendrons sur ce sujet plus tard.
 
 Nous avons par la suite commencé à travailler sur la définition des livrables et des points abordés durant la réunion de
-restitution. Il est important de noté que ces livrables se limitaient jusque là à une simple liste de vulnérabilités
+restitution. Il est important de noté que ces livrables se limitaient jusque-là à une simple liste de vulnérabilités
 ordonnées en fonction de leur criticité et sans démonstration ou explication du chemin d'attaque.
 \newline  La mise en place d'une restitution appropriée et argumentée de l'audit à permis de déceler quelques 
 méconnaissance dans plusieurs équipes (notamment vis-à-vis du framework IAM du groupe) et sert souvent de point de départ 
-à l'accompagnement des équipes entament leurs migration vers le DevSecOps.
+à l'accompagnement des équipes entament leur migration vers le DevSecOps.
 
 Voilà donc comment fonctionnait le processus d'audit applicatif entre 2019 et 2020. 
-\newline Cependant, ce processus étant tacite et non formaliser (la culture de l'orale étant encore très fort chez 
+\newline Cependant, ce processus étant tacite et non-formalisé (la culture de l'orale étant encore très fort chez 
 JCDecaux), plusieurs départs et changements de postes l'ont mis à mal.
 
 C'est pourquoi nous avons entrepris de formuler ce processus dans un langage commun (ici le \ac{BPMN}) afin de le partager
@@ -96,7 +96,7 @@ de quelques nouveautés nous permettant de mieux préparer l'audit. C'est ainsi 
 fournir à l'équipe de \ac{SSI} des informations supplémentaires sur la nature de l'application devant être audité ainsi 
 que les éventuelles contraintes temporelles.
 
-Ce processus étant en place dans sa version finale depuis Avril 2021, nous observons une amélioration progression des 
+Ce processus étant en place dans sa version définitive depuis Avril 2021, nous observons une amélioration progression des 
 conditions d'organisation des audits techniques, notamment sur les éléments de contexte relatif aux applications devant 
 être audités.
 Il s'agissait en effet d'un certain point de friction de septembre 2020 suite au départ d'une de nos collaboratrices.
@@ -112,7 +112,7 @@ mise en production de la plateforme \ac{K8S} et son audit par XMCO.
 Le premier aspect de sécurité des conteneurs à adresser porte sur la création et le maintient d'un inventaire exhaustif
 des \emph{Pods} en exécution sur les clusters et de leur état de vulnérabilité. S'il nous était possible d'extraire à la
 main cet inventaire depuis un cluster \ac{K8S}, leur multiplication à la suite au cloisonnement de 
-l'infrastructure a rendu la chose bien plus compliquée. Il nous faut donc nous équiper en consequence.
+l'infrastructure a rendu la chose bien plus compliquée. Il nous faut donc nous équiper en conséquence.
 
 \subsection{Recherche d'outils}
 Nous avons commencé à recherche des outils capables de nous fournir les informations nécessaires au suivi opérationnel 
@@ -120,13 +120,13 @@ des vulnérabilités des \emph{Pods} en fonctionnement.
 
 Cette recherche avait pour contraintes les éléments suivants :
 \begin{itemize}
-    \item Fonctionnement multi-cluster
+    \item Fonctionnement multicluster
     \item WebApplication pour la remontée des informations
-    \item Mise à jours de l'inventaire automatique et journalière
-    \item Export de rapport managériale
+    \item Mise à jour de l'inventaire automatique et journalière
+    \item Export de rapport managérial
 \end{itemize}
 
-Quatre solutions ont correspondaient donc à notre besoin :
+Quatre solutions correspondaient donc à notre besoin :
 \begin{itemize}
     \item Le projet klustair (www.klustair.com)
     \item Le service de sécurité Kubernetes d'Aqua (www.aquasec.com)
@@ -138,13 +138,14 @@ Après une rapide analyse de ces solutions (voir tableau \ref{tab:sectoolscompku
 \emph{Klustair} semblait correspondre au besoin, des fonctionnalités importantes sont manquantes. Notre choix devra donc
 s'orienter vers les solutions commerciales.
 
-Cependant, compte tenu de la crise du COVID-19 et du verrouillage des budgets nous ne pouvons plus lancer de projet à 
+Cependant, compte tenu de la crise de la COVID-19 et du verrouillage des budgets nous ne pouvons plus lancer de projet à 
 plus de 5 000€ dans l'accord du \ac{DAF}. Or, dans le cas des trois solutions restantes, la facture s'élèverait à minima
 à \linebreak 25 000€ annuel.
 
 Nous nous trouvons donc avec un dilemme : soit intégrer une solution peu sécurisée et remplissant une portion de nos 
-besoin, soit entamer une négociation avec la direction afin de débloquer des budget et plus que probablement se voir 
+besoin, soit entamer une négociation avec la direction afin de débloquer des budgets et plus que probablement se voir 
 refuser la proposition.
+
 \newpage 
 
 \begin{table}[h]
@@ -177,18 +178,18 @@ refuser la proposition.
     \end{center}
 \end{table}
 
-La solution à ce problème arrive cependant lorsque en Avril 2021 notre fournisseur de scanner de vulnérabilité 
+La solution à ce problème arrive cependant lorsqu'en Avril 2021 notre fournisseur de scanner de vulnérabilité 
 d'infrastructure annonce l'intégration de fonctionnalités dédier à Kubernetes dans InsightVM, la solution déjà utilisée 
 par l'équipe \ac{SSI}.
 
 \subsection{Gestion de la sécurité des clusters avec InsightVM}
-Après une rapide évaluation de faisabilité et experimentation des fonctionnalités nouvellement intégrées, nous prenons 
+Après une rapide évaluation de faisabilité et expérimentation des fonctionnalités nouvellement intégrées, nous prenons 
 contact avec l'éditeur pour obtenir quelques informations supplémentaires sur les recommandations d'implémentations et 
 la tarification des fonctionnalités. Aspect intéressant dans notre situation : seul le nombre d'agent de collecte déployé
 est comptabilisé dans le nombre d'IP associé à la licence, le reste des fonctionnalités étant intégrées à celle souscrite
 par JCDecaux.
-\linebreak Cet entretien permet de confirmer le mode de fonctionnement l'agent de collecte, ainsi que des actions qu'il 
-effectue sur le cluster. Le foncitonnement de l'agent et son intégration sur nos clusters est par ailleurs décrit dans 
+\linebreak Cet entretien permet de confirmer le mode de fonctionnement l'agents de collecte, ainsi que des actions qu'il 
+effectue sur le cluster. Le fonctionnement  de l'agent et son intégration sur nos clusters est par ailleurs décrit dans 
 un diagramme ci-après (voir diagramme \ref{figure:k8sscannerarchi}).
 
 Suite à cet entretien, nous effectuons quelques ajustements sur la configuration de l'agent et le déployons
@@ -199,8 +200,8 @@ informations relatives aux registres de conteneur et clusters Kuberntes.} et des
 Lorsque nous analysons les données remontées sur la plateforme, nous constatons quelques erreurs et bugs dans le 
 fonctionnement de la plateforme. Nous remontons donc ces points au support de l'éditeur et profitons de l'occasion
 pour demander l'ajout de plusieurs évolutions pour la plateforme.
-\newline Ces évolutions sont maintenant intégrées dans la feuille de route de l'éditeur. Elle devraient être intégrées 
-dans la plateforme Cloud Security d'ici le troisième trimestre de 2021.
+\newline Ces évolutions sont maintenant intégrées dans la feuille de route de l'éditeur. Elles devraient être intégrées 
+dans la plateforme Cloud Security d'ici au troisième trimestre de 2021.
 
 \begin{figure}[h]
     \centering
@@ -231,7 +232,7 @@ Cependant, il nous faut créer une base de prérequis de sécurité commune avec
 opérationnel si nous voulons pérenniser les remédiations faites. 
 \newline En effet, les procéssus en place pour la production des images (\ie build, qualification, enregistrement sur le
 registre, \dots) ne favorise pas la maintenance préventive des images de conteneur. C'est en soit une régression 
-vis-à-vis de infrastructures virtualisées.
+vis-à-vis des infrastructures virtualisées.
 
 Il nous faut donc définir des prérequis de sécurité pour les conteneurs et leurs images, ainsi que d'adapter les processus
 à ces derniers.
@@ -249,9 +250,9 @@ d'architecture.
     \item Les images doivent être compilées à partir d'images dites \emph{de base} issues des registres privés de JCDecaux.
     \item Toutes les images doivent être obligatoirement publiée sur les registres privés de JCDecaux, seules sources 
     autorisées sur les clusters \ac{K8S}.
-    \item Toutes les versions d'image doivent être désignées par un tag immutable.
+    \item Toutes les versions d'image doivent être désignées par un tag immuable.
     \item Toutes les images doivent faire l'object d'un scan de vulnérabilité à minima toutes les deux semaines.
-    \item Une revue des vulnérabilité doit être organisé entre l'équipe de sécurité et les développeurs tous les trois mois.
+    \item Une revue des vulnérabilités doit être organisé entre l'équipe de sécurité et les développeurs tous les trois mois.
     L'application des patchs de sécurité est à la charge des équipes de développements.
     \item Aucun conteneur ne doit contenir de secret, mot de passe, token out tuple d'authentification. Ces éléments doivent
     entre obtenu par le biais de la plateforme de centralisation des configurations.
@@ -263,16 +264,16 @@ d'architecture.
 \begin{itemize}
     \item Aucun \emph{pod} ne doit fonctionner avec l'utilisateur \emph{Root}. L'utilisation de \emph{Security Context} 
     permet d'accéder aux fonctionnalités autrement inaccessibles.
-    \item Aucun \emph{pod} ne doit monter de ressources propre au nœud de cluster l'hébergeant (\ie 
+    \item Aucun \emph{pod} ne doit monter de ressources propres au nœud de cluster l'hébergeant (\ie 
     \emph{/var/run/docker.socket}, \emph{hostpath}, \dots)
-    \item Toute ressources accédée par un \emph{pod} doit être présente dans le même espace de nom ou être explicitement 
+    \item Toute ressource accédée par un \emph{pod} doit être présente dans le même espace de nom ou être explicitement 
     listée dans une \ac{ACL}.
     \item Toute configuration, pour l'espace de nom, d'un pod ou application, doit être distribuée par la plateforme de 
     centralisation des configurations.
     \item Tout script de déploiement doit être hébergé sur les registres internes de JCDecaux(\ie Gitlab, Harbor, \dots).
 \end{itemize}
 
-Il sera prochainement intégrer à cette politique des restrictions sur le nombre et la nature de vulnérabilité présente 
+Il sera prochainement intégré à cette politique des restrictions sur le nombre et la nature de vulnérabilité présente 
 sur une image devant être déployé. Nous reviendrons sur ce point dans la section \ref{section:revue-vul-img}.
 \subsection{Application de la politique}
 L'ensemble des prérequis étant maintenant définies dans la politique de sécurité Kubernetes, il nous faut la faire 
@@ -281,22 +282,23 @@ appliquer et respecter par les différentes équipes du Groupe.
 processus.
 
 Nous souhaitons réduire au maximum l'impacte de l'intégration de la \ac{SSI} sur l'efficacité des développements, c'est 
-pourquoi nous avons fait le choix d'automatiser au maximum les verification et validations de conformité.
+pourquoi nous avons fait le choix d'automatiser au maximum les vérifications et validations de conformité.
 \newline Cette automatisation est rendue possible grâce à l'utilisation du logiciel \emph{Open Policy Agent Gatekeeper}
 sur les clusters.
 
 Cet outil, intégré au contrôleur d'admission \ac{K8S}, permets de définir de façon programmable des contraintes sur les
-configurations de déploiements. Ainsi, tout déploiement non conforme à la politique de sécurité se vera automatiquement 
+configurations de déploiements. Ainsi, tout déploiement non conforme à la politique de sécurité se verra automatiquement 
 interrompu par l'\emph{OPA Gatekeeper}; la personne à l'origine du déploiement étant immédiatement notifié des 
 contraintes non respectées à la suite du blocage.
 
 Nous avons donc fait intégrer l'ensemble des éléments de la politique de sécurité \ac{K8S} dans la base de contrainte d'
-\emph{OPA Gatekeeper}. Ces contraintes sont maintenant appliqués sur l'ensemble des clusters du Groupe JCDecaux.
+\emph{OPA Gatekeeper}. Ces contraintes sont maintenant appliquées sur l'ensemble des clusters du Groupe JCDecaux.
+
 \newpage
 
 \section{Revue des vulnérabilités des images} \label{section:revue-vul-img}
 Si nous disposons maintenant d'un inventaire ces conteneurs ainsi que des vulnérabilités les impactant, une gestion 
-proactive de la remediation et plus particulièrement de la gestion des patch est préférable. C'est d'ailleurs pour cela 
+proactive de la remédiation et plus particulièrement de la gestion des patchs est préférable. C'est d'ailleurs pour cela 
 nous l'avons intégrée à la politique de sécurité.
 
 Il nous faut donc mettre en œuvre cette revue de vulnérabilité au sein des équipes impliquées.
@@ -316,7 +318,7 @@ Nous avons donc proposé le processus de développement suivant aux équipes.
     \caption{Gestion des vulnérabilités d'image durant le développement}
 \end{figure}
 
-Ce nouveau processus intègre donc le scan des images de conteneur par les développeur, mais aussi de nouveaux éléments tels
+Ce nouveau processus intègre donc le scan des images de conteneur par les développeurs, mais aussi de nouveaux éléments tels
 que la classification des vulnérabilités et la mise à disposition d'une liste de vulnérabilité donc le risque est accepté
 par l'équipe de \ac{SSI}.
 \newline L'objectif de ces deux nouvelles actions étant de réduire le bruit généré par le scanner de vulnérabilité durant
@@ -327,26 +329,26 @@ le développement, tout en assurant un suivi et contrôle de l'équipe \ac{SSI} 
 \subsection{Unification des scanners}
 Jusqu'à récemment encore, il existait un certaine disparité entre les scanners de vulnérabilités déployés sur les 
 différents pipelines DevOps et ceux utilisés par les registres internes de conteneur. Ainsi, nous nous retrouvions avec 
-différentes configuration du scanner \emph{Trivy} sur les pipelines et différents configurations de \emph{Clair} sur les
+différentes configurations du scanner \emph{Trivy} sur les pipelines et différentes configurations de \emph{Clair} sur les
 registres \emph{\ac{ECR}} et \emph{Harbor}. 
 \newline Il devenait donc nécessaire d'unifier outils et configuration pour réaliser au mieux les revues de vulnérabilité.
 
-Après une comparaison de l'efficacité de chaque scanner, nous avons fait le choix de migrer les différents scanner en 
+Après une comparaison de l'efficacité de chaque scanner, nous avons fait le choix de migrer les différents scanners en 
 notre possession (hors \ac{ECR} donc) sur une configuration unique de Trivy. Si ce choix peut sembler discutable au vu 
 de la sensibilité de l'outil, il l'est beaucoup moins lorsque l'on prend en compte le fait que nous allons déployer une
 AllowList pour les vulnérabilités faisant office d'une acceptation de risques.
 
 \subsection{Attribution des vulnérabilités}
-Une problématique jusque là volontairement mise de coté se présente maintenant à nous: à quelle image appartient quelle 
-vulnérabilité?
+Une problématique jusque-là volontairement mise de côté se présente maintenant à nous : à quelle image appartient quelle 
+vulnérabilité ?
 
 En effet, nous demandons aux développeurs d'exploiter des images dites \emph{de bases} afin de concevoir leur 
 images \emph{applicatives}. Or, ces images \emph{de bases} peuvent porter faire hériter leurs vulnérabilités aux images 
 \emph{applicatives} les exploitants.
-\newline Il devient donc nécessaire de pouvoir lister de manière dissocié les vulnérabilités propres à chaque image : 
+\newline Il devient donc nécessaire de pouvoir lister de manière dissociée les vulnérabilités propres à chaque image : 
 \emph{de bases} ou \emph{applicatives}
 
-Ce problème ne pouvant être réglé avec le outils déjà en place, il nous faut donc en développer un adapté à ce nouveau 
+Ce problème ne pouvant être réglé avec les outils déjà en place, il nous faut donc en développer un adapté à ce nouveau 
 besoin.
 
 \subsection{Développement d'un démonstrateur de classification de vulnérabilité}
