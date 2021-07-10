@@ -221,5 +221,85 @@ registre miroirs \ac{AWS} \ac{ECR}.
 
 Cependant, on constate un nombre relativement haut de vulnérabilité (60 en moyenne) pour des conteneurs dont seul les 
 paquets sont analysés. De plus, une majorité de ces conteneurs sont basés sur un système d'exploitation Centos 7,
-système d'exploitation dont la date de fin de support est incertaine avec la migration de RedHat vers Centos Stream.
+système d'exploitation dont la date de fin de support est incertaine avec le choix de RedHat de migrer vers Centos Stream.
+
+\section{Sécurisation des images}
+Nous savons donc, grâce à la première revue de sécurité, qu'une majorité des images de conteneur sont vulnérables et 
+nécessitent un travail de remédiation.
+
+Cependant, il nous faut créer une base de prérequis de sécurité commune avec les équipes de développement et 
+opérationnel si nous voulons pérenniser les remédiations faites. 
+\newline En effet, les procéssus en place pour la production des images (\ie build, qualification, enregistrement sur le
+registre, \dots) ne favorise pas la maintenance préventive des images de conteneur. C'est en soit une régression 
+vis-à-vis de infrastructures virtualisées.
+
+Il nous faut donc définir des prérequis de sécurité pour les conteneurs et leurs images, ainsi que d'adapter les processus
+à ces derniers.
+
+\subsection{Durcissement des images et déploiements}
+Cette première phase de sécurisation des images vise à réduire les risques directement portés par l'image du conteneur.
+
+Nous avons donc décrit dans une politique de sécurité dédiée aux conteneurs et à \ac{K8S} un ensemble de prérequis et de 
+contraintes. Nous nous sommes pour cela basé sur les recommandations du livre \citetitle{kub_sercuity_rice_2018}
+(\citeauthor{kub_sercuity_rice_2018})\autocite{kub_sercuity_rice_2018} et du retour d'expérience de notre équipe 
+d'architecture.
+
+\textbf{Prérequis des conteneurs:}
+\begin{itemize}
+    \item Les images doivent être compilées à partir d'images dites \emph{de base} issues des registres privés de JCDecaux.
+    \item Toutes les images doivent être obligatoirement publiée sur les registres privés de JCDecaux, seules sources 
+    autorisées sur les clusters \ac{K8S}.
+    \item Toutes les versions d'image doivent être désignées par un tag immutable.
+    \item Toutes les images doivent faire l'object d'un scan de vulnérabilité à minima toutes les deux semaines.
+    \item Une revue des vulnérabilité doit être organisé entre l'équipe de sécurité et les développeurs tous les trois mois.
+    L'application des patchs de sécurité est à la charge des équipes de développements.
+    \item Aucun conteneur ne doit contenir de secret, mot de passe, token out tuple d'authentification. Ces éléments doivent
+    entre obtenu par le biais de la plateforme de centralisation des configurations.
+\end{itemize}
+
+\newpage
+
+\textbf{Prérequis de déploiement}
+\begin{itemize}
+    \item Aucun \emph{pod} ne doit fonctionner avec l'utilisateur \emph{Root}. L'utilisation de \emph{Security Context} 
+    permet d'accéder aux fonctionnalités autrement inaccessibles.
+    \item Aucun \emph{pod} ne doit monter de ressources propre au nœud de cluster l'hébergeant (\ie 
+    \emph{/var/run/docker.socket}, \emph{hostpath}, \dots)
+    \item Toute ressources accédée par un \emph{pod} doit être présente dans le même espace de nom ou être explicitement 
+    listée dans une \ac{ACL}.
+    \item Toute configuration, pour l'espace de nom, d'un pod ou application, doit être distribuée par la plateforme de 
+    centralisation des configurations.
+    \item Tout script de déploiement doit être hébergé sur les registres internes de JCDecaux(\ie Gitlab, Harbor, \dots).
+\end{itemize}
+
+Il sera prochainement intégrer à cette politique des restrictions sur le nombre et la nature de vulnérabilité présente 
+sur une image devant être déployé. Nous reviendrons sur ce point dans la section \ref{section:revue-vul-img}.
+\subsection{Application de la politique}
+L'ensemble des prérequis étant maintenant définies dans la politique de sécurité Kubernetes, il nous faut la faire 
+appliquer et respecter par les différentes équipes du Groupe.
+\newline Pour cela, deux options se présentent à nous : l'application par l'automatisation et l'application par les
+processus.
+
+Nous souhaitons réduire au maximum l'impacte de l'intégration de la \ac{SSI} sur l'efficacité des développements, c'est 
+pourquoi nous avons fait le choix d'automatiser au maximum les verification et validations de conformité.
+\newline Cette automatisation est rendue possible grâce à l'utilisation du logiciel \emph{Open Policy Agent Gatekeeper}
+sur les clusters.
+
+Cet outil, intégré au contrôleur d'admission \ac{K8S}, permets de définir de façon programmable des contraintes sur les
+configurations de déploiements. Ainsi, tout déploiement non conforme à la politique de sécurité se vera automatiquement 
+interrompu par l'\emph{OPA Gatekeeper}; la personne à l'origine du déploiement étant immédiatement notifié des 
+contraintes non respectées à la suite du blocage.
+
+Nous avons donc fait intégrer l'ensemble des éléments de la politique de sécurité \ac{K8S} dans la base de contrainte d'
+\emph{OPA Gatekeeper}. Ces contraintes sont maintenant appliqués sur l'ensemble des clusters du Groupe JCDecaux.
+\newpage
+
+\section{Revue des vulnérabilités des images} \label{section:revue-vul-img}
+Si nous disposons maintenant d'un inventaire ces conteneurs ainsi que des vulnérabilités les impactant, une gestion 
+proactive de la remediation et plus particulièrement de la gestion des patch est préférable. C'est d'ailleurs pour cela 
+nous l'avons intégrée à la politique de sécurité.
+
+Il nous faut donc mettre en œuvre cette revue de vulnérabilité au sein des équipes impliquées.
+
+\subsection{Ajustement du processus de développement}
 
