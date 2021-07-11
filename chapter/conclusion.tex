@@ -1,0 +1,68 @@
+%!TEX root = ../main.tex
+\chapter{Conclusion}
+Si ce projet n'est pas tout à fait terminé, un démonstrateur devant être livré et une revue des images devant être faite,
+nous pouvons cependant tirer quelques conclusions sur cette mission de fin d'étude et la réalisation du projet.
+
+\section{Réalisation des objectifs}
+Les objectifs de cette mission portaient sur la sécurisation des développement dans le cadre d'applications conteneurisées.
+
+Nous devions donc trouve et mettre en œuvre diverses solutions afin de sécuriser dans un premier temps les applications 
+développés dans le Groupe JCDecaux, pendant leur développement et leur exploitation.
+\newline Puis dans un second temps, nous devions sécuriser le support d'execution de ces applications, 
+en l'occurrence des conteneurs fonctionnant sur plusieurs clusters Kubernetes.
+
+Grâce à la refonte du processus d'audit des applications, le Groupe JCDecaux dispose maintenant d'un cadre unique, 
+standard et connue de toutes les équipes pour la réalisation de qualification de sécurité des développements internes.
+Ce processus, supplémenté d'un accompagnement des équipes dans la mise en place des remédiations aux vulnérabilités 
+découvertes, a fait l'objet d'une évaluation en conditions réelles lors d'un audit applicatif.
+\newline Les résultats de cette évaluation étant probants, il convient, à mon sens, de considérer que cet objectif est 
+atteint.
+
+Si nous ne pouvons encore statuer sur l'atteinte du deuxième objectif, certaines tâches étant toujours en cours de 
+réalisation, nous pouvons cependant observer et apprécier les premiers résultats des actions entreprises.
+
+En effet, grâce à la mise en place d'outils d'inventaire et de scanner de vulnérabilités, nous pouvons maintenant 
+évaluer le niveau de sécurité des conteneurs fonctionnant sur les clusters Kubernetes du Groupe JCDecaux. Ces nouvelles
+capacités permettront un meilleur suivi opérationnel de la sécurité des clusters et de lancer au besoin des plans de 
+remédiation, et non plus seulement à la suite d'audit précédent une mise en production.
+\newline De plus, grâce au travail de normalisation des conteneurs et à l'outillage des développeurs, nous favorisons 
+l'intégration de la gestion des patchs durant les phases de développement, ce qui réduit le risque de blocage de déploiement
+et diminue progressivement la dette technique de l'infrastructure.
+\newline Les équipes du Groupe JCDecaux se dirigent donc toujours plus vers une méthodologie \emph{DevSecOps} et augmentent 
+de ce fait le niveau de sécurité global des infrastructures et applications.
+
+\section{Solution à la problématique}
+La problématique à laquelle nous cherchions à répondre tout au long de ce mémoire était la suivante : 
+\begin{center}
+    \color{bluejcd}  \enquote{Comment sécuriser une application conteneurisée, de sa conception à son déploiement sur un
+     cluster Kubernetes?}
+\end{center}
+Je pense donc maintenant être en mesure d'apporter plusieurs éléments permettant de répondre à cette problématique.
+
+En premier lieu, il est important de comprendre que si les thèmes de la sécurité informatique et du développement sont
+avant tout des sujets techniques, l'aspect \emph{humain} n'est pas pour autant à négliger.
+\newline En effet, nous aurons bon mettre en œuvre toutes les procédures, les outils et scanner que nous voudrons, si nous
+ne somme pas capables de fidéliser les équipes impliquées dans le développement applicatif à notre démarche, nous ne 
+pourrons pas sécuriser nos applications et conteneurs.
+
+Un deuxième élément de réponse porterait quant à lui sur la démonstration des \emph{bénéfices} apportés par l'intégration
+de la sécurité informatique dans les développements. En effet, si nous ne somme pas de réaliser une intégration efficace
+de procédures et outils de sécurité; puis de démontrer leurs bénéfices aux équipes de développements, ces dernières risque,t
+de percevoir ces évolutions comme des contraintes et non comme une façon d'améliorer leurs conditions de travail.
+
+Enfin, il est important de rationaliser ces évolutions aux ressources, humaines et techniques, disponible dans l'entreprise
+d'accueil. Un projet de sécurisation des développements ne serait être considéré comme viable s'il ne peut assurer un 
+impact mesuré sur ces ressources.
+
+\section{Quel futur pour ce projet ?}
+Ce projet de sécurisation n'étant pas encore complété, il nous faut d'abord terminer l'ensemble des actions associées.
+Cependant, une fois finalisé, nous serons en droit de nous questionner sur les débouchés de ce projet.
+
+Si l'aspect technique et organisationnelle de la sécurité des développements sont portés de façon appropriée dans ce projet,
+l'aspect humain et sociétal fait en partie défaut.
+
+En effet, il serait intéressant et bénéfique, tant pour l'entreprise que pour ses employés, de proposer des formations
+au développement sécurisé aux équipes internes du Groupe. Le développement et la sécurité informatique étant en constante
+évolution, la mise à disposition de plateformes tel que \href{https://www.securecodewarrior.com/}{SecureCodeWarrior} ou 
+\href{https://www.hackedu.com/}{HackEDU} permettraient aux équipes d'améliorer leurs compétences et d'effectuer le 
+travail de veille nécessaire au développement sécurisé.
